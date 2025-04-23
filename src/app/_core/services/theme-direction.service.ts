@@ -3,7 +3,9 @@ import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
 
 export type Direction = 'ltr' | 'rtl';
-export type Theme = 'light' | 'dark' | 'green-orange-light' | 'green-orange-dark';
+
+// In theme-direction.service.ts
+export type Theme = 'light' | 'dark' | 'green-orange-light' | 'green-orange-dark' | 'indigo-light' | 'indigo-dark';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,9 @@ export class ThemeDirectionService {
     'light': 'assets/css/theme-light.css',
     'dark': 'assets/css/theme-dark.css',
     'green-orange-light': 'assets/css/theme-green-orange-light.css',
-    'green-orange-dark': 'assets/css/theme-green-orange-dark.css'
+    'green-orange-dark': 'assets/css/theme-green-orange-dark.css',
+    'indigo-light': 'assets/css/theme-indigo-light.css',
+    'indigo-dark': 'assets/css/theme-indigo-dark.css'
   };
 
   // References to stylesheets

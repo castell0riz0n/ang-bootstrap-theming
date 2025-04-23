@@ -131,6 +131,8 @@
     "DEFAULT_DARK": "الافتراضي الليلي",
     "NATURE_LIGHT": "الطبيعة النهارية",
     "NATURE_DARK": "الطبيعة الليلية",
-    "APPEARANCE": "المظهر"
+    "APPEARANCE": "المظهر",
+    "INDIGO_LIGHT": "Indigo Light",
+    "INDIGO_DARK": "Indigo Dark"
   }
 }

@@ -222,6 +222,55 @@ interface ThemeOption {
       height: 2px;
       background-color: #f39c12;
     }
+
+    .preview-indigo-light .preview-header {
+      background-color: #393969;
+    }
+
+    .preview-indigo-light .preview-sidebar {
+      background-color: #F9F6F2;
+    }
+
+    .preview-indigo-light .preview-content {
+      background-color: #FFFFFF;
+    }
+
+    .preview-indigo-light .preview-card {
+      background-color: #F9F6F2;
+      border: 1px solid #E7EBED;
+    }
+
+    .preview-indigo-light .preview-header::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background-color: #FFD308;
+    }
+
+    /* Indigo Dark Theme Preview */
+    .preview-indigo-dark .preview-header {
+      background-color: #343A40;
+    }
+
+    .preview-indigo-dark .preview-sidebar {
+      background-color: #343A40;
+    }
+
+    .preview-indigo-dark .preview-content {
+      background-color: #2C3338;
+    }
+
+    .preview-indigo-dark .preview-card {
+      background-color: #404952;
+      border: 1px solid #23272B;
+    }
+
+    .preview-indigo-dark .preview-header::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background-color: #FFD308;
+    }
   `]
 })
 export class ThemeSelectorComponent implements OnInit {
@@ -253,6 +302,20 @@ export class ThemeSelectorComponent implements OnInit {
       description: 'Green and orange dark theme',
       icon: 'bi-tree-fill',
       previewClass: 'preview-green-orange-dark'
+    },
+    {
+      id: 'indigo-light',
+      name: 'Indigo Light',
+      description: 'Clean indigo and yellow light theme',
+      icon: 'bi-brightness-high',
+      previewClass: 'preview-indigo-light'
+    },
+    {
+      id: 'indigo-dark',
+      name: 'Indigo Dark',
+      description: 'Sleek indigo and yellow dark theme',
+      icon: 'bi-moon-stars',
+      previewClass: 'preview-indigo-dark'
     }
   ];
 

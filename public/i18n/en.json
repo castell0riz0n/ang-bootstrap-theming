@@ -131,6 +131,8 @@
     "DEFAULT_DARK": "Default Dark",
     "NATURE_LIGHT": "Nature Light",
     "NATURE_DARK": "Nature Dark",
-    "APPEARANCE": "Appearance"
+    "APPEARANCE": "Appearance",
+    "INDIGO_LIGHT": "Indigo Light",
+    "INDIGO_DARK": "Indigo Dark"
   }
 }
