@@ -1,0 +1,52 @@
+{
+  "APP": {
+    "TITLE": "هواپیمایی اسکای‌وینگز",
+    "TAGLINE": "با راحتی و آسودگی پرواز کنید"
+  },
+  "NAVIGATION": {
+    "HOME": "خانه",
+    "FLIGHTS": "پروازها",
+    "BOOKINGS": "رزروهای من",
+    "PROFILE": "پروفایل",
+    "LOGIN": "ورود",
+    "REGISTER": "ثبت‌نام",
+    "LANGUAGE": "زبان"
+  },
+  "FLIGHT_SEARCH": {
+    "TITLE": "پرواز خود را پیدا کنید",
+    "FROM": "مبدا",
+    "TO": "مقصد",
+    "DEPARTURE_DATE": "تاریخ عزیمت",
+    "RETURN_DATE": "تاریخ برگشت",
+    "PASSENGERS": "مسافران",
+    "SEARCH_BUTTON": "جستجوی پروازها",
+    "ONE_WAY": "یک‌طرفه",
+    "ROUND_TRIP": "رفت و برگشت",
+    "FROM_REQUIRED": "فرودگاه مبدا الزامی است",
+    "TO_REQUIRED": "فرودگاه مقصد الزامی است",
+    "DATE_REQUIRED": "تاریخ عزیمت الزامی است",
+    "RETURN_DATE_REQUIRED": "تاریخ برگشت الزامی است",
+    "SEARCHING": "در حال جستجو...",
+    "PASSENGER_COUNT": "مسافر",
+    "MODIFY_SEARCH": "تغییر جستجو",
+    "FILTERS": "فیلترها",
+    "PRICE_RANGE": "محدوده قیمت",
+    "STOPS": "توقف‌ها",
+    "DIRECT": "مستقیم",
+    "ONE_STOP": "یک توقف",
+    "DEPARTURE_TIME": "زمان عزیمت",
+    "MORNING": "صبح",
+    "AFTERNOON": "بعدازظهر",
+    "EVENING": "عصر",
+    "SEARCHING_FLIGHTS": "در حال جستجوی پروازها...",
+    "RESULTS_FOUND": "نتایج یافت شد",
+    "SORT_PRICE": "مرتب‌سازی بر اساس قیمت",
+    "SORT_DURATION": "مرتب‌سازی بر اساس مدت زمان",
+    "SORT_DEPARTURE": "مرتب‌سازی بر اساس زمان عزیمت",
+    "SORT_ARRIVAL": "مرتب‌سازی بر اساس زمان ورود",
+    "NO_RESULTS": "هیچ پروازی برای این جستجو پیدا نشد. لطفاً تاریخ یا مقصد دیگری را امتحان کنید.",
+    "PLACEHOLDER_TITLE": "آماده برای جستجوی پروازها",
+    "PLACEHOLDER_TEXT": "با استفاده از فرم جستجو، پروازهای موجود برای سفر خود را پیدا کنید.",
+    "USE_FORM": "جزئیات سفر خود را وارد کنید تا شروع کنید."
+  }
+}

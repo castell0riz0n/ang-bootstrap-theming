@@ -1,0 +1,176 @@
+/*
+ * Optimized Utility Classes
+ * Generates pixel-based utility classes with reasonable ranges and increments
+ */
+
+// Define Bootstrap breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+// Helper mixin to generate classes with specific increments
+@mixin generate-classes($property, $class-prefix, $start, $end, $increment) {
+  @for $i from $start through $end {
+    @if $i % $increment == 0 {
+      .#{$class-prefix}-#{$i}px {
+        #{$property}: #{$i}px !important;
+      }
+
+      @each $breakpoint, $min-width in $breakpoints {
+        @if $breakpoint != xs {
+          @media (min-width: $min-width) {
+            .#{$class-prefix}-#{$breakpoint}-#{$i}px {
+              #{$property}: #{$i}px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Generate margin utilities
+// Small range (0-20px) with 1px increments
+@include generate-classes(margin, m, 0, 20, 1);
+// Medium range (20-100px) with 5px increments
+@include generate-classes(margin, m, 25, 100, 5);
+// Large range (100-300px) with 25px increments
+@include generate-classes(margin, m, 125, 300, 25);
+
+// Generate padding utilities with the same ranges
+@include generate-classes(padding, p, 0, 20, 1);
+@include generate-classes(padding, p, 25, 100, 5);
+@include generate-classes(padding, p, 125, 300, 25);
+
+// Generate directional margin utilities
+@include generate-classes(margin-top, mt, 0, 50, 5);
+@include generate-classes(margin-bottom, mb, 0, 50, 5);
+@include generate-classes(margin-inline-start, ms, 0, 50, 5);
+@include generate-classes(margin-inline-end, me, 0, 50, 5);
+
+// Generate directional padding utilities
+@include generate-classes(padding-top, pt, 0, 50, 5);
+@include generate-classes(padding-bottom, pb, 0, 50, 5);
+@include generate-classes(padding-inline-start, ps, 0, 50, 5);
+@include generate-classes(padding-inline-end, pe, 0, 50, 5);
+
+// Generate height utilities
+@include generate-classes(height, h, 0, 50, 1);
+@include generate-classes(height, h, 55, 100, 5);
+@include generate-classes(height, h, 110, 300, 10);
+@include generate-classes(height, h, 350, 1000, 50);
+
+// Generate width utilities
+@include generate-classes(width, w, 0, 50, 1);
+@include generate-classes(width, w, 55, 100, 5);
+@include generate-classes(width, w, 110, 300, 10);
+@include generate-classes(width, w, 350, 1000, 50);
+
+// Generate font-size classes
+@include generate-classes(font-size, fs, 8, 24, 1);
+@include generate-classes(font-size, fs, 26, 50, 2);
+
+// Generate border-radius utilities
+@include generate-classes(border-radius, round, 0, 20, 1);
+@include generate-classes(border-radius, round, 25, 50, 5);
+
+// Generate positioning utilities
+@include generate-classes(top, top, 0, 50, 5);
+@include generate-classes(bottom, bottom, 0, 50, 5);
+@include generate-classes(inset-inline-start, start, 0, 50, 5);
+@include generate-classes(inset-inline-end, end, 0, 50, 5);
+
+// Generate border utilities
+@mixin generate-border-classes($property, $class-prefix, $values...) {
+  @each $value in $values {
+    .#{$class-prefix}-#{$value}px {
+      @if $value > 0 {
+        #{$property}: #{$value}px solid var(--bs-border-color, #dee2e6) !important;
+      } @else {
+        #{$property}: none !important;
+      }
+    }
+
+    @each $breakpoint, $min-width in $breakpoints {
+      @if $breakpoint != xs {
+        @media (min-width: $min-width) {
+          .#{$class-prefix}-#{$breakpoint}-#{$value}px {
+            @if $value > 0 {
+              #{$property}: #{$value}px solid var(--bs-border-color, #dee2e6) !important;
+            } @else {
+              #{$property}: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Only generate border utilities for common values: 0, 1, 2, 3, 4, 5
+$border-values: 0, 1, 2, 3, 4, 5;
+
+@include generate-border-classes(border, border, $border-values...);
+@include generate-border-classes(border-top, border-top, $border-values...);
+@include generate-border-classes(border-bottom, border-bottom, $border-values...);
+@include generate-border-classes(border-inline-start, border-start, $border-values...);
+@include generate-border-classes(border-inline-end, border-end, $border-values...);
+
+// Generate viewport-based sizing for common values
+$viewport-increments: 0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100;
+
+@each $value in $viewport-increments {
+  .h-#{$value}vh {
+    height: #{$value}vh !important;
+  }
+
+  .w-#{$value}vw {
+    width: #{$value}vw !important;
+  }
+
+  @each $breakpoint, $min-width in $breakpoints {
+    @if $breakpoint != xs {
+      @media (min-width: $min-width) {
+        .h-#{$breakpoint}-#{$value}vh {
+          height: #{$value}vh !important;
+        }
+
+        .w-#{$breakpoint}-#{$value}vw {
+          width: #{$value}vw !important;
+        }
+      }
+    }
+  }
+}
+
+// Generate negative margin utilities for common values
+@mixin generate-negative-margin($property, $class-prefix, $values...) {
+  @each $value in $values {
+    .#{$class-prefix}-n#{$value}px {
+      #{$property}: -#{$value}px !important;
+    }
+
+    @each $breakpoint, $min-width in $breakpoints {
+      @if $breakpoint != xs {
+        @media (min-width: $min-width) {
+          .#{$class-prefix}-#{$breakpoint}-n#{$value}px {
+            #{$property}: -#{$value}px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Common negative margin values
+$negative-margin-values: 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50;
+
+@include generate-negative-margin(margin-top, mt, $negative-margin-values...);
+@include generate-negative-margin(margin-bottom, mb, $negative-margin-values...);
+@include generate-negative-margin(margin-inline-start, ms, $negative-margin-values...);
+@include generate-negative-margin(margin-inline-end, me, $negative-margin-values...);

@@ -195,21 +195,79 @@ body.rtl {
   }
 
   // Fix for input groups in RTL mode
+  /* When the input is the first child, it should have radius on the right */
+  .input-group > .form-control:first-child,
+  .input-group > .form-select:first-child {
+    border-radius: 0 0.375rem 0.375rem 0;
+  }
+
+  /* When the input is the last child, it should have radius on the left */
+  .input-group > .form-control:last-child,
+  .input-group > .form-select:last-child {
+    border-radius: 0.375rem 0 0 0.375rem;
+  }
+
+  /* When input is both first and last child (no addons), it needs radius on both sides */
+  .input-group > .form-control:only-child,
+  .input-group > .form-select:only-child {
+    border-radius: 0.375rem;
+  }
+
+  /* Input-group-text as first child */
   .input-group > .input-group-text:first-child {
     border-radius: 0 0.375rem 0.375rem 0;
   }
 
+  /* Input-group-text as last child */
   .input-group > .input-group-text:last-child {
     border-radius: 0.375rem 0 0 0.375rem;
   }
 
-  // Handle RTL sizing variants too
+  /* If an element is neither first nor last, no radius */
+  .input-group > *:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+
+  /* Size variants need the same treatment */
+
+  /* Large input group */
+  .input-group-lg > .form-control:first-child,
+  .input-group-lg > .form-select:first-child {
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
+  .input-group-lg > .form-control:last-child,
+  .input-group-lg > .form-select:last-child {
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  .input-group-lg > .form-control:only-child,
+  .input-group-lg > .form-select:only-child {
+    border-radius: 0.5rem;
+  }
+
   .input-group-lg > .input-group-text:first-child {
     border-radius: 0 0.5rem 0.5rem 0;
   }
 
   .input-group-lg > .input-group-text:last-child {
     border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  /* Small input group */
+  .input-group-sm > .form-control:first-child,
+  .input-group-sm > .form-select:first-child {
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+
+  .input-group-sm > .form-control:last-child,
+  .input-group-sm > .form-select:last-child {
+    border-radius: 0.25rem 0 0 0.25rem;
+  }
+
+  .input-group-sm > .form-control:only-child,
+  .input-group-sm > .form-select:only-child {
+    border-radius: 0.25rem;
   }
 
   .input-group-sm > .input-group-text:first-child {

@@ -112,6 +112,62 @@ import { ThemeDirectionService } from '../../_core/services/theme-direction.serv
                   <span class="input-group-text">.00</span>
                 </div>
               </div>
+
+              <!-- Input with no addons -->
+              <div class="col-md-4">
+                <label class="form-label">No Addons</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="No addons">
+                </div>
+                <small class="text-muted">Should have rounded borders on both sides</small>
+              </div>
+
+              <!-- Input with start addon only -->
+              <div class="col-md-4">
+                <label class="form-label">Start Addon Only</label>
+                <div class="input-group">
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" placeholder="Start addon only">
+                </div>
+                <small class="text-muted">Should have rounded border on end side only</small>
+              </div>
+
+              <!-- Input with end addon only -->
+              <div class="col-md-4">
+                <label class="form-label">End Addon Only</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="End addon only">
+                  <span class="input-group-text">.00</span>
+                </div>
+                <small class="text-muted">Should have rounded border on start side only</small>
+              </div>
+
+              <!-- Input with both addons -->
+              <div class="col-md-4">
+                <label class="form-label">Both Addons</label>
+                <div class="input-group">
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" placeholder="Both addons">
+                  <span class="input-group-text">.00</span>
+                </div>
+                <small class="text-muted">Should have no rounded borders on input</small>
+              </div>
+
+              <!-- Large input with no addons -->
+              <div class="col-md-4">
+                <label class="form-label">Large - No Addons</label>
+                <div class="input-group input-group-lg">
+                  <input type="text" class="form-control" placeholder="Large, no addons">
+                </div>
+              </div>
+
+              <!-- Small input with no addons -->
+              <div class="col-md-4">
+                <label class="form-label">Small - No Addons</label>
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" placeholder="Small, no addons">
+                </div>
+              </div>
             </div>
 
             <!-- Theme and Direction Controls -->
@@ -148,7 +204,17 @@ import { ThemeDirectionService } from '../../_core/services/theme-direction.serv
       </div>
     </div>
   `,
-  styles: []
+  styles: [
+    `
+      .input-group {
+        margin-bottom: 0.5rem;
+      }
+
+      .card {
+        overflow: visible;
+      }
+    `
+  ]
 })
 export class FormTestComponent implements AfterViewInit {
   testForm: FormGroup;

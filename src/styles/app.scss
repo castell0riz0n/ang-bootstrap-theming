@@ -27,6 +27,7 @@
 
 // RTL-specific overrides (must come last)
 @import "utils/rtl-utils";
+@import "utils/helpers";
 
 // Theme-specific overrides (if needed) - these would be dynamically loaded in ThemeDirectionService
 // @import "themes/theme-overrides";
