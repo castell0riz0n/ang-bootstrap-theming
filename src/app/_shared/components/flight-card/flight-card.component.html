@@ -1,0 +1,64 @@
+<div class="card flight-card mb-3">
+    <div class="card-body">
+      <div class="row">
+        <!-- Airline Info -->
+        <div class="col-md-2 d-flex flex-column align-items-center justify-content-center">
+          <img title="test" [src]="flight.airlineLogo" [alt]="flight.airlineName" class="airline-logo mb-2">
+          <span class="airline-name">{{ flight.airlineName }}</span>
+          <span class="flight-number text-muted">{{ flight.flightNumber }}</span>
+        </div>
+        
+        <!-- Flight Details -->
+        <div class="col-md-7">
+          <div class="flight-details">
+            <!-- Departure & Arrival -->
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="departure text-center">
+                <h4 class="time mb-0">{{ flight.departureTime }}</h4>
+                <p class="airport mb-0">{{ flight.departureAirport }}</p>
+                <small class="date text-muted">{{ flight.departureDate | date }}</small>
+              </div>
+              
+              <div class="flight-path flex-grow-1 px-3">
+                <div class="d-flex flex-column align-items-center">
+                  <small class="duration text-muted">{{ flight.duration }}</small>
+                  <div class="path-line position-relative">
+                    <div class="path-dot start"></div>
+                    <div class="path-line-inner"></div>
+                    <div class="path-dot end"></div>
+                  </div>
+                  <small class="stops text-muted" *ngIf="flight.stops > 0">
+                    {{ flight.stops }} {{ flight.stops === 1 ? 'stop' : 'stops' }}
+                  </small>
+                  <small class="stops text-success" *ngIf="flight.stops === 0">Direct</small>
+                </div>
+              </div>
+              
+              <div class="arrival text-center">
+                <h4 class="time mb-0">{{ flight.arrivalTime }}</h4>
+                <p class="airport mb-0">{{ flight.arrivalAirport }}</p>
+                <small class="date text-muted">{{ flight.arrivalDate | date }}</small>
+              </div>
+            </div>
+            
+            <!-- Flight Features -->
+            <div class="flight-features mt-3">
+              <span class="badge bg-light text-dark me-2" *ngIf="flight.wifi">Wi-Fi</span>
+              <span class="badge bg-light text-dark me-2" *ngIf="flight.entertainment">Entertainment</span>
+              <span class="badge bg-light text-dark me-2" *ngIf="flight.power">Power Outlets</span>
+              <span class="badge bg-light text-dark me-2" *ngIf="flight.mealIncluded">Meal Included</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Price & Booking -->
+        <div class="col-md-3 d-flex flex-column align-items-center justify-content-center border-start">
+          <div class="price-container text-center">
+            <h3 class="price mb-0">${{ flight.price }}</h3>
+            <p class="text-muted">per passenger</p>
+            <button class="btn btn-book">Select</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,159 @@
+/* 
+ * Light Theme with Warm Colors for Airline Booking Application
+ */
+
+ :root {
+    /* Primary Color - Warm Blue */
+    --primary: #3a5db3;
+    --primary-rgb: 58, 93, 179;
+    --primary-dark: #2c4a9a;
+    --primary-light: #6b87d0;
+    
+    /* Secondary Color - Warm Gray */
+    --secondary: #6c7a89;
+    --secondary-rgb: 108, 122, 137;
+    --secondary-dark: #566573;
+    --secondary-light: #919eab;
+    
+    /* Accent Color - Warm Orange */
+    --accent: #e67e22;
+    --accent-rgb: 230, 126, 34;
+    --accent-dark: #d35400;
+    --accent-light: #f39c12;
+    
+    /* Success Color - Warm Green */
+    --success: #27ae60;
+    --success-rgb: 39, 174, 96;
+    --success-dark: #1e8449;
+    --success-light: #2ecc71;
+    
+    /* Warning Color - Warm Yellow */
+    --warning: #f39c12;
+    --warning-rgb: 243, 156, 18;
+    --warning-dark: #d68910;
+    --warning-light: #f9bf3b;
+    
+    /* Danger Color - Warm Red */
+    --danger: #e74c3c;
+    --danger-rgb: 231, 76, 60;
+    --danger-dark: #c0392b;
+    --danger-light: #f75b50;
+    
+    /* Info Color - Warm Teal */
+    --info: #16a085;
+    --info-rgb: 22, 160, 133;
+    --info-dark: #138a72;
+    --info-light: #1abc9c;
+    
+    /* Background Colors */
+    --body-bg: #f9f6f2;
+    --body-color: #34495e;
+    
+    /* Card and Panel Colors */
+    --card-bg: #ffffff;
+    --card-border: #f0e9e9;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    
+    /* Input and Form Colors */
+    --input-bg: #ffffff;
+    --input-border: #e8e0e0;
+    --input-color: #34495e;
+    --input-focus-border: #95a5a6;
+    
+    /* Typography */
+    --font-family-sans-serif: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --headings-font-weight: 500;
+    --headings-color: #2c3e50;
+  }
+  
+  /* Override Bootstrap's variables */
+  :root {
+    --bs-primary: var(--primary);
+    --bs-primary-rgb: var(--primary-rgb);
+    --bs-secondary: var(--secondary);
+    --bs-secondary-rgb: var(--secondary-rgb);
+    --bs-success: var(--success);
+    --bs-success-rgb: var(--success-rgb);
+    --bs-info: var(--info);
+    --bs-info-rgb: var(--info-rgb);
+    --bs-warning: var(--warning);
+    --bs-warning-rgb: var(--warning-rgb);
+    --bs-danger: var(--danger);
+    --bs-danger-rgb: var(--danger-rgb);
+    --bs-body-bg: var(--body-bg);
+    --bs-body-color: var(--body-color);
+    --bs-body-font-family: var(--font-family-sans-serif);
+  }
+  
+  /* Additional custom class for accent color */
+  .btn-accent {
+    background-color: var(--accent);
+    color: #fff;
+  }
+  
+  .btn-accent:hover {
+    background-color: var(--accent-dark);
+    color: #fff;
+  }
+  
+  .text-accent {
+    color: var(--accent) !important;
+  }
+  
+  .bg-accent {
+    background-color: var(--accent) !important;
+  }
+  
+  /* Enhanced card styling */
+  .card {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+    box-shadow: var(--card-shadow);
+  }
+  
+  /* Input styling */
+  .form-control, .form-select {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--input-color);
+  }
+  
+  .form-control:focus, .form-select:focus {
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.25);
+  }
+  
+  /* Custom navbar styling */
+  .navbar-airline {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  .navbar-airline .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .navbar-airline .nav-link:hover {
+    color: white;
+  }
+  
+  /* Search panel */
+  .search-panel {
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+  
+  /* Flight card */
+  .flight-card {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .flight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Transition for smooth language direction switching */
+  .language-transition * {
+    transition: all 0.3s ease;
+  }

@@ -1,0 +1,309 @@
+/*
+ * Green & Orange Light Theme for Airline Booking Application
+ */
+
+:root {
+  /* Primary Color - Dark Green */
+  --primary: #1e5631;
+  --primary-rgb: 30, 86, 49;
+  --primary-dark: #14391f;
+  --primary-light: #2d7a45;
+
+  /* Secondary Color - Muted Green */
+  --secondary: #5a7561;
+  --secondary-rgb: 90, 117, 97;
+  --secondary-dark: #445a4a;
+  --secondary-light: #7a9381;
+
+  /* Accent Color - Warm Orange */
+  --accent: #e67e22;
+  --accent-rgb: 230, 126, 34;
+  --accent-dark: #d35400;
+  --accent-light: #f39c12;
+
+  /* Success Color - Natural Green */
+  --success: #27ae60;
+  --success-rgb: 39, 174, 96;
+  --success-dark: #1e8449;
+  --success-light: #2ecc71;
+
+  /* Warning Color - Amber */
+  --warning: #f5b041;
+  --warning-rgb: 245, 176, 65;
+  --warning-dark: #e67e22;
+  --warning-light: #f8c471;
+
+  /* Danger Color - Terracotta */
+  --danger: #c0392b;
+  --danger-rgb: 192, 57, 43;
+  --danger-dark: #922b21;
+  --danger-light: #e74c3c;
+
+  /* Info Color - Teal */
+  --info: #16a085;
+  --info-rgb: 22, 160, 133;
+  --info-dark: #138a72;
+  --info-light: #1abc9c;
+
+  /* Background Colors */
+  --body-bg: #f8f9f5;
+  --body-color: #2c3e50;
+
+  /* Card and Panel Colors */
+  --card-bg: #ffffff;
+  --card-border: #e8f0e4;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+  /* Input and Form Colors */
+  --input-bg: #ffffff;
+  --input-border: #d1e0d3;
+  --input-color: #2c3e50;
+  --input-focus-border: #5a7561;
+
+  /* Typography */
+  --font-family-sans-serif: var(--font-family-ltr);
+  --headings-font-weight: 500;
+  --headings-color: #1e5631;
+}
+
+/* Override Bootstrap's variables */
+:root {
+  --bs-primary: var(--primary);
+  --bs-primary-rgb: var(--primary-rgb);
+  --bs-secondary: var(--secondary);
+  --bs-secondary-rgb: var(--secondary-rgb);
+  --bs-success: var(--success);
+  --bs-success-rgb: var(--success-rgb);
+  --bs-info: var(--info);
+  --bs-info-rgb: var(--info-rgb);
+  --bs-warning: var(--warning);
+  --bs-warning-rgb: var(--warning-rgb);
+  --bs-danger: var(--danger);
+  --bs-danger-rgb: var(--danger-rgb);
+  --bs-body-bg: var(--body-bg);
+  --bs-body-color: var(--body-color);
+  --bs-body-font-family: var(--font-family-sans-serif);
+  --bs-link-color: var(--primary);
+  --bs-link-hover-color: var(--primary-dark);
+}
+
+/* Additional custom class for accent color */
+.btn-accent {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+}
+
+.btn-outline-accent {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-outline-accent:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.text-accent {
+  color: var(--accent) !important;
+}
+
+.bg-accent {
+  background-color: var(--accent) !important;
+}
+
+/* Bootstrap button overrides */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Enhanced card styling */
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+/* Input styling */
+.form-control, .form-select {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--input-color);
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.25);
+}
+
+/* Custom navbar styling */
+.navbar-airline {
+  background-color: var(--primary);
+  color: white;
+}
+
+.navbar-airline .navbar-brand {
+  color: white;
+}
+
+.navbar-airline .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-airline .nav-link:hover,
+.navbar-airline .nav-link:focus {
+  color: white;
+}
+
+.navbar-airline .nav-link.active {
+  color: white;
+  font-weight: 500;
+}
+
+/* Search panel */
+.search-panel {
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+}
+
+/* Input group styling */
+.input-group-text {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Flight card */
+.flight-card {
+  transition: transform 0.2s ease-in-out;
+  border-left: 4px solid var(--primary);
+}
+
+.flight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero section */
+.hero-section {
+  background-color: var(--primary);
+  color: white;
+  position: relative;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, var(--accent), var(--accent-light));
+}
+
+/* Custom accent border utility */
+.border-accent {
+  border-color: var(--accent) !important;
+}
+
+/* Custom feature cards */
+.feature-card {
+  border-top: 3px solid var(--primary);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .feature-icon {
+  color: var(--primary);
+}
+
+/* Badge styling */
+.badge.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.badge.bg-accent {
+  background-color: var(--accent) !important;
+}
+
+/* Progress bars */
+.progress-bar {
+  background-color: var(--primary);
+}
+
+.progress-bar.bg-accent {
+  background-color: var(--accent);
+}
+
+/* List group custom styling */
+.list-group-item.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Link styling */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* Custom tabs with green accent */
+.nav-tabs .nav-link.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.nav-tabs .nav-link:hover {
+  border-bottom-color: var(--primary-light);
+}
+
+/* Dropdown menu custom styling */
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--primary);
+}
+
+/* Timeline component */
+.timeline-point {
+  background-color: var(--primary);
+}
+
+/* Transition for smooth language direction switching */
+.language-transition * {
+  transition: all 0.3s ease;
+}

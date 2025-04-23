@@ -1,0 +1,278 @@
+
+    <div class="flight-detail-container" [appRtlSupport]="(languageService.currentLanguage$ | async)?.direction!">
+      <div class="container py-5">
+        <!-- Back button -->
+        <div class="mb-4">
+          <button class="btn btn-outline-secondary" (click)="goBack()">
+            <i class="bi bi-arrow-left me-2 flip-rtl"></i>
+            {{ 'FLIGHT_DETAIL.BACK_TO_RESULTS' | translate }}
+          </button>
+        </div>
+        
+        <!-- Loading state -->
+        <div *ngIf="isLoading" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        
+        <!-- Flight not found -->
+        <div *ngIf="!isLoading && !flight" class="alert alert-danger">
+          {{ 'FLIGHT_DETAIL.NOT_FOUND' | translate }}
+        </div>
+        
+        <!-- Flight details -->
+        <div *ngIf="!isLoading && flight" class="flight-details">
+          <!-- Header card -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col-md-2 text-center">
+                  <img [src]="flight.airlineLogo" [alt]="flight.airlineName" class="airline-logo">
+                  <div class="airline-name mt-2">{{ flight.airlineName }}</div>
+                  <div class="flight-number text-muted">{{ flight.flightNumber }}</div>
+                </div>
+                
+                <div class="col-md-7">
+                  <div class="flight-route">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="airport-info text-center">
+                        <div class="time fw-bold fs-4">{{ flight.departureTime }}</div>
+                        <div class="code fs-5">{{ flight.departureCode }}</div>
+                        <div class="city text-muted">{{ flight.departureCity }}</div>
+                      </div>
+                      
+                      <div class="flight-path flex-grow-1 px-4">
+                        <div class="d-flex flex-column align-items-center">
+                          <div class="duration text-muted mb-1">{{ flight.duration }}</div>
+                          <div class="path-line position-relative">
+                            <div class="path-dot start"></div>
+                            <div class="path-line-inner"></div>
+                            <div class="path-dot end"></div>
+                          </div>
+                          <div class="text-muted mt-1">
+                            <span *ngIf="flight.stops === 0">{{ 'FLIGHT_DETAIL.DIRECT' | translate }}</span>
+                            <span *ngIf="flight.stops === 1">{{ 'FLIGHT_DETAIL.ONE_STOP' | translate }}</span>
+                            <span *ngIf="flight.stops > 1">{{ flight.stops }} {{ 'FLIGHT_DETAIL.STOPS' | translate }}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="airport-info text-center">
+                        <div class="time fw-bold fs-4">{{ flight.arrivalTime }}</div>
+                        <div class="code fs-5">{{ flight.arrivalCode }}</div>
+                        <div class="city text-muted">{{ flight.arrivalCity }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-3 text-center">
+                  <div class="price fs-3 fw-bold text-primary">${{ flight.price }}</div>
+                  <div class="text-muted mb-3">{{ 'FLIGHT_DETAIL.PER_PERSON' | translate }}</div>
+                  <button class="btn btn-primary btn-lg" [routerLink]="['/booking', flight.id]">
+                    {{ 'FLIGHT_DETAIL.BOOK_NOW' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Flight details tabs -->
+          <ul class="nav nav-tabs mb-4" id="flightTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" 
+                      type="button" role="tab" aria-controls="details" aria-selected="true">
+                {{ 'FLIGHT_DETAIL.FLIGHT_DETAILS' | translate }}
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="baggage-tab" data-bs-toggle="tab" data-bs-target="#baggage" 
+                      type="button" role="tab" aria-controls="baggage" aria-selected="false">
+                {{ 'FLIGHT_DETAIL.BAGGAGE' | translate }}
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="policy-tab" data-bs-toggle="tab" data-bs-target="#policy" 
+                      type="button" role="tab" aria-controls="policy" aria-selected="false">
+                {{ 'FLIGHT_DETAIL.POLICY' | translate }}
+              </button>
+            </li>
+          </ul>
+          
+          <div class="tab-content" id="flightTabsContent">
+            <!-- Flight Details tab -->
+            <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">{{ 'FLIGHT_DETAIL.FLIGHT_INFO' | translate }}</h5>
+                  
+                  <div class="row mb-4">
+                    <div class="col-md-6">
+                      <h6>{{ 'FLIGHT_DETAIL.AMENITIES' | translate }}</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2">
+                          <i class="bi bi-wifi me-2"></i>
+                          <span *ngIf="flight.wifi">{{ 'FLIGHT_DETAIL.WIFI_AVAILABLE' | translate }}</span>
+                          <span *ngIf="!flight.wifi" class="text-muted">{{ 'FLIGHT_DETAIL.WIFI_UNAVAILABLE' | translate }}</span>
+                        </li>
+                        <li class="mb-2">
+                          <i class="bi bi-display me-2"></i>
+                          <span *ngIf="flight.entertainment">{{ 'FLIGHT_DETAIL.ENTERTAINMENT' | translate }}</span>
+                          <span *ngIf="!flight.entertainment" class="text-muted">{{ 'FLIGHT_DETAIL.NO_ENTERTAINMENT' | translate }}</span>
+                        </li>
+                        <li class="mb-2">
+                          <i class="bi bi-plug me-2"></i>
+                          <span *ngIf="flight.power">{{ 'FLIGHT_DETAIL.POWER_OUTLETS' | translate }}</span>
+                          <span *ngIf="!flight.power" class="text-muted">{{ 'FLIGHT_DETAIL.NO_POWER' | translate }}</span>
+                        </li>
+                        <li>
+                          <i class="bi bi-cup-hot me-2"></i>
+                          <span *ngIf="flight.mealIncluded">{{ 'FLIGHT_DETAIL.MEAL_INCLUDED' | translate }}</span>
+                          <span *ngIf="!flight.mealIncluded" class="text-muted">{{ 'FLIGHT_DETAIL.MEAL_PURCHASE' | translate }}</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div class="col-md-6">
+                      <h6>{{ 'FLIGHT_DETAIL.FLIGHT_DETAILS' | translate }}</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2">
+                          <span class="text-muted">{{ 'FLIGHT_DETAIL.AIRCRAFT' | translate }}:</span> Boeing 787-9
+                        </li>
+                        <li class="mb-2">
+                          <span class="text-muted">{{ 'FLIGHT_DETAIL.FLIGHT_DISTANCE' | translate }}:</span> 5,585 km
+                        </li>
+                        <li class="mb-2">
+                          <span class="text-muted">{{ 'FLIGHT_DETAIL.CLASS' | translate }}:</span> {{ flight.cabinClass | titlecase }}
+                        </li>
+                        <li>
+                          <span class="text-muted">{{ 'FLIGHT_DETAIL.SEATS_LEFT' | translate }}:</span> {{ flight.seatsAvailable }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <!-- Schedule -->
+                  <h6>{{ 'FLIGHT_DETAIL.SCHEDULE' | translate }}</h6>
+                  <div class="timeline">
+                    <div class="timeline-item">
+                      <div class="timeline-point"></div>
+                      <div class="timeline-content">
+                        <div class="d-flex justify-content-between">
+                          <div class="time fw-bold">{{ flight.departureTime }}</div>
+                          <div class="date">{{ flight.departureDate | date }}</div>
+                        </div>
+                        <div class="location">{{ flight.departureAirport }} ({{ flight.departureCode }})</div>
+                        <div class="city text-muted">{{ flight.departureCity }}</div>
+                      </div>
+                    </div>
+                    
+                    <div class="timeline-item" *ngIf="flight.stops > 0">
+                      <div class="timeline-point"></div>
+                      <div class="timeline-content">
+                        <div class="d-flex justify-content-between">
+                          <div class="time fw-bold">12:30</div>
+                          <div class="date">{{ flight.departureDate | date }}</div>
+                        </div>
+                        <div class="location">Stopover - 1h 30m</div>
+                        <div class="city text-muted">Frankfurt Airport (FRA)</div>
+                      </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                      <div class="timeline-point"></div>
+                      <div class="timeline-content">
+                        <div class="d-flex justify-content-between">
+                          <div class="time fw-bold">{{ flight.arrivalTime }}</div>
+                          <div class="date">{{ flight.arrivalDate | date }}</div>
+                        </div>
+                        <div class="location">{{ flight.arrivalAirport }} ({{ flight.arrivalCode }})</div>
+                        <div class="city text-muted">{{ flight.arrivalCity }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Baggage tab -->
+            <div class="tab-pane fade" id="baggage" role="tabpanel" aria-labelledby="baggage-tab">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">{{ 'FLIGHT_DETAIL.BAGGAGE_INFO' | translate }}</h5>
+                  
+                  <div class="row">
+                    <div class="col-md-4 mb-4">
+                      <div class="baggage-item text-center p-3 border rounded">
+                        <i class="bi bi-handbag fs-1 mb-3 d-block"></i>
+                        <h6>{{ 'FLIGHT_DETAIL.CABIN_BAGGAGE' | translate }}</h6>
+                        <p class="mb-0">1 × 8kg (55 × 40 × 20 cm)</p>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                      <div class="baggage-item text-center p-3 border rounded">
+                        <i class="bi bi-briefcase fs-1 mb-3 d-block"></i>
+                        <h6>{{ 'FLIGHT_DETAIL.CHECKED_BAGGAGE' | translate }}</h6>
+                        <p class="mb-0">1 × 23kg</p>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                      <div class="baggage-item text-center p-3 border rounded">
+                        <i class="bi bi-plus-circle fs-1 mb-3 d-block"></i>
+                        <h6>{{ 'FLIGHT_DETAIL.EXTRA_BAGGAGE' | translate }}</h6>
+                        <p class="mb-0">$50 {{ 'FLIGHT_DETAIL.PER_BAG' | translate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>
+                    {{ 'FLIGHT_DETAIL.BAGGAGE_POLICY_NOTE' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Policy tab -->
+            <div class="tab-pane fade" id="policy" role="tabpanel" aria-labelledby="policy-tab">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">{{ 'FLIGHT_DETAIL.FARE_RULES' | translate }}</h5>
+                  
+                  <div class="row mb-4">
+                    <div class="col-md-6 mb-4">
+                      <h6><i class="bi bi-arrow-clockwise me-2"></i> {{ 'FLIGHT_DETAIL.CHANGES' | translate }}</h6>
+                      <p>{{ 'FLIGHT_DETAIL.CHANGES_POLICY' | translate }}</p>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                      <h6><i class="bi bi-x-circle me-2"></i> {{ 'FLIGHT_DETAIL.CANCELLATION' | translate }}</h6>
+                      <p>{{ 'FLIGHT_DETAIL.CANCELLATION_POLICY' | translate }}</p>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                      <h6><i class="bi bi-calendar-check me-2"></i> {{ 'FLIGHT_DETAIL.NO_SHOW' | translate }}</h6>
+                      <p>{{ 'FLIGHT_DETAIL.NO_SHOW_POLICY' | translate }}</p>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                      <h6><i class="bi bi-person-check me-2"></i> {{ 'FLIGHT_DETAIL.REFUND' | translate }}</h6>
+                      <p>{{ 'FLIGHT_DETAIL.REFUND_POLICY' | translate }}</p>
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    {{ 'FLIGHT_DETAIL.POLICY_DISCLAIMER' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

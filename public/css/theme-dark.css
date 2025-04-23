@@ -1,0 +1,208 @@
+/* 
+ * Dark Theme with Warm Colors for Airline Booking Application
+ */
+
+ :root {
+    /* Primary Color - Warm Blue */
+    --primary: #4668c9;
+    --primary-rgb: 70, 104, 201;
+    --primary-dark: #3754a7;
+    --primary-light: #6b87d0;
+    
+    /* Secondary Color - Warm Gray */
+    --secondary: #8d99a5;
+    --secondary-rgb: 141, 153, 165;
+    --secondary-dark: #6c7a89;
+    --secondary-light: #a9b3bd;
+    
+    /* Accent Color - Warm Orange */
+    --accent: #f39c12;
+    --accent-rgb: 243, 156, 18;
+    --accent-dark: #e67e22;
+    --accent-light: #f9bf3b;
+    
+    /* Success Color - Warm Green */
+    --success: #2ecc71;
+    --success-rgb: 46, 204, 113;
+    --success-dark: #27ae60;
+    --success-light: #58d68d;
+    
+    /* Warning Color - Warm Yellow */
+    --warning: #f9bf3b;
+    --warning-rgb: 249, 191, 59;
+    --warning-dark: #f5a718;
+    --warning-light: #ffd363;
+    
+    /* Danger Color - Warm Red */
+    --danger: #f75b50;
+    --danger-rgb: 247, 91, 80;
+    --danger-dark: #e74c3c;
+    --danger-light: #fc7c73;
+    
+    /* Info Color - Warm Teal */
+    --info: #1abc9c;
+    --info-rgb: 26, 188, 156;
+    --info-dark: #16a085;
+    --info-light: #48c9b0;
+    
+    /* Background Colors */
+    --body-bg: #2c3338;
+    --body-color: #ecf0f1;
+    
+    /* Card and Panel Colors */
+    --card-bg: #353b40;
+    --card-border: #42474c;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    
+    /* Input and Form Colors */
+    --input-bg: #3d4246;
+    --input-border: #4c5258;
+    --input-color: #ecf0f1;
+    --input-focus-border: #95a5a6;
+    
+    /* Typography */
+    --font-family-sans-serif: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --headings-font-weight: 500;
+    --headings-color: #ecf0f1;
+  }
+  
+  /* Override Bootstrap's variables */
+  :root {
+    --bs-primary: var(--primary);
+    --bs-primary-rgb: var(--primary-rgb);
+    --bs-secondary: var(--secondary);
+    --bs-secondary-rgb: var(--secondary-rgb);
+    --bs-success: var(--success);
+    --bs-success-rgb: var(--success-rgb);
+    --bs-info: var(--info);
+    --bs-info-rgb: var(--info-rgb);
+    --bs-warning: var(--warning);
+    --bs-warning-rgb: var(--warning-rgb);
+    --bs-danger: var(--danger);
+    --bs-danger-rgb: var(--danger-rgb);
+    --bs-body-bg: var(--body-bg);
+    --bs-body-color: var(--body-color);
+    --bs-body-font-family: var(--font-family-sans-serif);
+    --bs-border-color: var(--card-border);
+  }
+  
+  /* Additional custom class for accent color */
+  .btn-accent {
+    background-color: var(--accent);
+    color: #fff;
+  }
+  
+  .btn-accent:hover {
+    background-color: var(--accent-dark);
+    color: #fff;
+  }
+  
+  .text-accent {
+    color: var(--accent) !important;
+  }
+  
+  .bg-accent {
+    background-color: var(--accent) !important;
+  }
+  
+  /* Dark mode overrides for Bootstrap components */
+  .card {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+    box-shadow: var(--card-shadow);
+  }
+  
+  .modal-content {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+  }
+  
+  .dropdown-menu {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+  }
+  
+  .dropdown-item {
+    color: var(--body-color);
+  }
+  
+  .dropdown-item:hover, .dropdown-item:focus {
+    background-color: var(--primary-dark);
+    color: white;
+  }
+  
+  .list-group-item {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+    color: var(--body-color);
+  }
+  
+  .form-control, .form-select {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--input-color);
+  }
+  
+  .form-control:focus, .form-select:focus {
+    background-color: var(--input-bg);
+    border-color: var(--input-focus-border);
+    color: var(--input-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.25);
+  }
+  
+  /* Table styles */
+  .table {
+    color: var(--body-color);
+  }
+  
+  .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--body-color);
+  }
+  
+  /* Custom navbar styling */
+  .navbar-airline {
+    background-color: var(--primary-dark);
+    color: white;
+  }
+  
+  .navbar-airline .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .navbar-airline .nav-link:hover {
+    color: white;
+  }
+  
+  /* Search panel */
+  .search-panel {
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+  
+  /* Flight card */
+  .flight-card {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .flight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Input group text */
+  .input-group-text {
+    background-color: var(--primary-dark);
+    color: white;
+    border-color: var(--primary-dark);
+  }
+  
+  /* Text muted */
+  .text-muted {
+    color: #b1b8bc !important;
+  }
+  
+  /* Transition for smooth language direction switching */
+  .language-transition * {
+    transition: all 0.3s ease;
+  }

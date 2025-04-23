@@ -1,0 +1,383 @@
+/*
+ * Green & Orange Dark Theme for Airline Booking Application
+ */
+
+:root {
+  /* Primary Color - Dark Green (lightened for dark theme) */
+  --primary: #2d7a45;
+  --primary-rgb: 45, 122, 69;
+  --primary-dark: #1e5631;
+  --primary-light: #3c9858;
+
+  /* Secondary Color - Muted Green */
+  --secondary: #7a9381;
+  --secondary-rgb: 122, 147, 129;
+  --secondary-dark: #5a7561;
+  --secondary-light: #9ab5a0;
+
+  /* Accent Color - Warm Orange (brightened for dark theme) */
+  --accent: #f39c12;
+  --accent-rgb: 243, 156, 18;
+  --accent-dark: #e67e22;
+  --accent-light: #f5b041;
+
+  /* Success Color - Natural Green */
+  --success: #2ecc71;
+  --success-rgb: 46, 204, 113;
+  --success-dark: #27ae60;
+  --success-light: #58d68d;
+
+  /* Warning Color - Amber */
+  --warning: #f8c471;
+  --warning-rgb: 248, 196, 113;
+  --warning-dark: #f5b041;
+  --warning-light: #fad7a0;
+
+  /* Danger Color - Terracotta */
+  --danger: #e74c3c;
+  --danger-rgb: 231, 76, 60;
+  --danger-dark: #c0392b;
+  --danger-light: #ec7063;
+
+  /* Info Color - Teal */
+  --info: #1abc9c;
+  --info-rgb: 26, 188, 156;
+  --info-dark: #16a085;
+  --info-light: #48c9b0;
+
+  /* Background Colors */
+  --body-bg: #1c2a21;
+  --body-color: #ecf0f1;
+
+  /* Card and Panel Colors */
+  --card-bg: #2c3c32;
+  --card-border: #354a3c;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  /* Input and Form Colors */
+  --input-bg: #354a3c;
+  --input-border: #455d4c;
+  --input-color: #ecf0f1;
+  --input-focus-border: #5a7561;
+
+  /* Typography */
+  --font-family-sans-serif: var(--font-family-ltr);
+  --headings-font-weight: 500;
+  --headings-color: #f5f5f5;
+}
+
+/* Override Bootstrap's variables */
+:root {
+  --bs-primary: var(--primary);
+  --bs-primary-rgb: var(--primary-rgb);
+  --bs-secondary: var(--secondary);
+  --bs-secondary-rgb: var(--secondary-rgb);
+  --bs-success: var(--success);
+  --bs-success-rgb: var(--success-rgb);
+  --bs-info: var(--info);
+  --bs-info-rgb: var(--info-rgb);
+  --bs-warning: var(--warning);
+  --bs-warning-rgb: var(--warning-rgb);
+  --bs-danger: var(--danger);
+  --bs-danger-rgb: var(--danger-rgb);
+  --bs-body-bg: var(--body-bg);
+  --bs-body-color: var(--body-color);
+  --bs-body-font-family: var(--font-family-sans-serif);
+  --bs-border-color: var(--card-border);
+  --bs-link-color: var(--accent-light);
+  --bs-link-hover-color: var(--accent);
+}
+
+/* Additional custom class for accent color */
+.btn-accent {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #222;
+  font-weight: 500;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #222;
+}
+
+.btn-outline-accent {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-outline-accent:hover {
+  background-color: var(--accent);
+  color: #222;
+}
+
+.text-accent {
+  color: var(--accent) !important;
+}
+
+.bg-accent {
+  background-color: var(--accent) !important;
+}
+
+/* Bootstrap button overrides */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Dark mode overrides for Bootstrap components */
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+.modal-content {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+.dropdown-menu {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+.dropdown-item {
+  color: var(--body-color);
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: var(--primary-dark);
+  color: white;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--primary);
+}
+
+.list-group-item {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  color: var(--body-color);
+}
+
+.list-group-item.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.form-control, .form-select {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--input-color);
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--input-bg);
+  border-color: var(--input-focus-border);
+  color: var(--input-color);
+  box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.25);
+}
+
+/* Table styles */
+.table {
+  color: var(--body-color);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--body-color);
+}
+
+/* Custom navbar styling */
+.navbar-airline {
+  background-color: var(--primary-dark);
+  color: white;
+}
+
+.navbar-airline .navbar-brand {
+  color: white;
+}
+
+.navbar-airline .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-airline .nav-link:hover,
+.navbar-airline .nav-link:focus {
+  color: white;
+}
+
+.navbar-airline .nav-link.active {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Search panel */
+.search-panel {
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+}
+
+/* Input group text */
+.input-group-text {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Flight card */
+.flight-card {
+  transition: transform 0.2s ease-in-out;
+  border-left: 4px solid var(--primary);
+}
+
+.flight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero section */
+.hero-section {
+  background-color: var(--primary-dark);
+  color: white;
+  position: relative;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, var(--accent), var(--accent-light));
+}
+
+/* Text muted */
+.text-muted {
+  color: #a1aba7 !important;
+}
+
+/* Custom feature cards */
+.feature-card {
+  border-top: 3px solid var(--primary);
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card .feature-icon {
+  color: var(--accent);
+}
+
+/* Nav tabs custom styling */
+.nav-tabs {
+  border-bottom-color: var(--card-border);
+}
+
+.nav-tabs .nav-link {
+  color: var(--body-color);
+}
+
+.nav-tabs .nav-link.active {
+  background-color: transparent;
+  border-color: var(--card-border);
+  border-bottom-color: var(--primary);
+  color: var(--accent);
+}
+
+.nav-tabs .nav-link:hover {
+  border-bottom-color: var(--primary-light);
+  color: var(--accent-light);
+}
+
+/* Link styling */
+a {
+  color: var(--accent-light);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Timeline component */
+.timeline-point {
+  background-color: var(--primary);
+}
+
+.timeline::before {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-content {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Popover and tooltip styling */
+.popover,
+.tooltip-inner {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+.bs-popover-auto[data-popper-placement^=top] .popover-arrow::after,
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::after {
+  border-top-color: var(--card-bg);
+}
+
+/* Alert modifications */
+.alert-primary {
+  background-color: rgba(var(--primary-rgb), 0.2);
+  border-color: rgba(var(--primary-rgb), 0.3);
+  color: var(--primary-light);
+}
+
+.alert-success {
+  background-color: rgba(var(--success-rgb), 0.2);
+  border-color: rgba(var(--success-rgb), 0.3);
+  color: var(--success-light);
+}
+
+.alert-warning {
+  background-color: rgba(var(--warning-rgb), 0.2);
+  border-color: rgba(var(--warning-rgb), 0.3);
+  color: var(--warning-light);
+}
+
+.alert-danger {
+  background-color: rgba(var(--danger-rgb), 0.2);
+  border-color: rgba(var(--danger-rgb), 0.3);
+  color: var(--danger-light);
+}
+
+/* Transition for smooth language direction switching */
+.language-transition * {
+  transition: all 0.3s ease;
+}

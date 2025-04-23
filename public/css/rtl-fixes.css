@@ -1,0 +1,90 @@
+/*
+ * RTL Fixes for Custom Components
+ * These styles fix RTL issues not handled by Bootstrap RTL CSS
+ */
+
+/* Custom RTL fixes for components not covered by Bootstrap RTL */
+body.rtl {
+  /* Fix for icons - flip directional icons */
+  .bi-arrow-left:before { content: "\f138"; } /* Bootstrap icon for right arrow */
+  .bi-arrow-right:before { content: "\f12a"; } /* Bootstrap icon for left arrow */
+  .bi-chevron-left:before { content: "\f285"; } /* Bootstrap icon for right chevron */
+  .bi-chevron-right:before { content: "\f284"; } /* Bootstrap icon for left chevron */
+
+  /* Fix for custom flight card styling */
+  .flight-card {
+    border-left: none !important;
+    border-right: 4px solid var(--primary) !important;
+  }
+
+  /* Timeline component RTL fixes */
+  .timeline {
+    padding-left: 0;
+    padding-right: 2rem;
+
+    &::before {
+      left: auto;
+      right: 9px;
+    }
+
+    .timeline-point {
+      left: auto;
+      right: -2rem;
+    }
+  }
+
+  /* Form check (checkboxes & radios) RTL fixes */
+  .form-check {
+    padding-right: 1.5em;
+    padding-left: 0;
+
+    .form-check-input {
+      float: right;
+      margin-right: -1.5em;
+      margin-left: 0;
+    }
+  }
+
+  /* Flight path visualization */
+  .flight-path {
+    .path-line {
+      direction: ltr; /* Keep flight path drawing consistent */
+    }
+  }
+
+  /* Button icons spacing fixes */
+  .btn i + span {
+    margin-right: 0.5rem;
+    margin-left: 0;
+  }
+
+  /* Language selector custom fixes */
+  .language-selector .flag-icon {
+    margin-right: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+/* Special class to flip icons in RTL mode */
+.flip-rtl {
+  body.rtl & {
+    transform: scaleX(-1);
+  }
+}
+
+/* Fix for vertical alignment in Bootstrap 5 RTL navbar brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+/* Transition effects for RTL switching */
+.language-transition {
+  .card,
+  .search-panel,
+  .navbar,
+  .form-control,
+  .btn {
+    transition: all 0.3s ease-in-out !important;
+  }
+}

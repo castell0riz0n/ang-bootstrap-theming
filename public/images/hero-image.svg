@@ -1,0 +1,74 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bbdefb" />
+      <stop offset="100%" stop-color="#e3f2fd" />
+    </linearGradient>
+    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f5f5f5" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky background -->
+  <rect x="0" y="0" width="800" height="600" fill="url(#skyGradient)" />
+  
+  <!-- Sun -->
+  <circle cx="700" cy="100" r="60" fill="#ffeb3b" />
+  
+  <!-- Clouds -->
+  <g>
+    <ellipse cx="200" cy="150" rx="70" ry="40" fill="url(#cloudGradient)" />
+    <ellipse cx="250" cy="170" rx="60" ry="35" fill="url(#cloudGradient)" />
+    <ellipse cx="150" cy="170" rx="60" ry="35" fill="url(#cloudGradient)" />
+  </g>
+  
+  <g>
+    <ellipse cx="600" cy="200" rx="80" ry="45" fill="url(#cloudGradient)" />
+    <ellipse cx="650" cy="220" rx="70" ry="40" fill="url(#cloudGradient)" />
+    <ellipse cx="550" cy="220" rx="70" ry="40" fill="url(#cloudGradient)" />
+  </g>
+  
+  <!-- Airplane -->
+  <g transform="translate(400, 300) scale(1.5) rotate(-10)">
+    <!-- Airplane body -->
+    <path d="M0,0 L150,0 L180,30 L150,60 L0,60 L-30,30 Z" fill="#1a73e8" />
+    <!-- Cockpit -->
+    <path d="M150,0 L180,30 L150,60 Q170,30 150,0 Z" fill="#0d47a1" />
+    <!-- Tail -->
+    <path d="M-20,10 L-50,0 L-50,60 L-20,50 Z" fill="#0d47a1" />
+    <!-- Wings -->
+    <path d="M50,0 L70,-40 L120,-40 L100,0 Z" fill="#42a5f5" />
+    <path d="M50,60 L70,100 L120,100 L100,60 Z" fill="#42a5f5" />
+    <!-- Windows -->
+    <circle cx="20" cy="20" r="5" fill="white" />
+    <circle cx="40" cy="20" r="5" fill="white" />
+    <circle cx="60" cy="20" r="5" fill="white" />
+    <circle cx="80" cy="20" r="5" fill="white" />
+    <circle cx="100" cy="20" r="5" fill="white" />
+    <circle cx="120" cy="20" r="5" fill="white" />
+    <circle cx="140" cy="20" r="5" fill="white" />
+    
+    <circle cx="20" cy="40" r="5" fill="white" />
+    <circle cx="40" cy="40" r="5" fill="white" />
+    <circle cx="60" cy="40" r="5" fill="white" />
+    <circle cx="80" cy="40" r="5" fill="white" />
+    <circle cx="100" cy="40" r="5" fill="white" />
+    <circle cx="120" cy="40" r="5" fill="white" />
+    <circle cx="140" cy="40" r="5" fill="white" />
+  </g>
+  
+  <!-- Flight path -->
+  <path d="M100,500 Q400,350 700,450" stroke="#ff6d00" stroke-width="3" stroke-dasharray="10,10" fill="none" />
+  
+  <!-- Destination markers -->
+  <g transform="translate(100, 500)">
+    <circle cx="0" cy="0" r="15" fill="#1a73e8" />
+    <circle cx="0" cy="0" r="7" fill="white" />
+  </g>
+  
+  <g transform="translate(700, 450)">
+    <circle cx="0" cy="0" r="15" fill="#ff6d00" />
+    <circle cx="0" cy="0" r="7" fill="white" />
+  </g>
+</svg>
