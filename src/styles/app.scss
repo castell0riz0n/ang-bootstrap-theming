@@ -1,24 +1,32 @@
 /*
  * Application-specific styles and enhancements
+ * Import order optimized for proper cascade
  */
 
-// Core styles
-@import "core/variables";
-@import "core/reset";
-@import "core/typography";
-@import "core/animations";
+// Core styles (variables first, then base styles)
+@import "core/variables";   // Must come first for variable definitions
+@import "core/reset";       // Basic reset styles
+@import "core/typography";  // Typography defaults
 
-// Utility styles
+// Utility styles (functional, non-visual)
 @import "utils/accessibility";
-@import "utils/rtl-utils";
 @import "utils/spacing";
 
-// Component styles
-@import "components/forms";
-@import "components/buttons";
-@import "components/cards";
-@import "components/flight-cards";
-@import "components/hero";
-
-// Layout styles
+// Layout styles (structural)
 @import "layout/responsive";
+
+// Component styles (visual, from general to specific)
+@import "components/forms";      // Form defaults
+@import "components/buttons";    // Button styles that build on forms
+@import "components/cards";      // Card styles
+@import "components/flight-cards"; // Specific flight card styles
+@import "components/hero";       // Hero section styles
+
+// General animations
+@import "core/animations";
+
+// RTL-specific overrides (must come last)
+@import "utils/rtl-utils";
+
+// Theme-specific overrides (if needed) - these would be dynamically loaded in ThemeDirectionService
+// @import "themes/theme-overrides";

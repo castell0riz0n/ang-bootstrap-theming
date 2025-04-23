@@ -19,6 +19,7 @@ import {DurationPipe} from './pipes/duration.pipe';
 import {SearchFormComponent} from './components/search-form.component';
 import {ThemeSelectorComponent} from './components/theme-selector/theme-selector.component';
 import {FormInspectorComponent} from './components/form-inspector.component';
+import {FormTestComponent} from './components/form-test.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {FormInspectorComponent} from './components/form-inspector.component';
     SearchFormComponent,
     ThemeSelectorComponent,
     FormInspectorComponent,
+    FormTestComponent,
 
     // Directives
     RtlSupportDirective,
@@ -62,6 +64,7 @@ import {FormInspectorComponent} from './components/form-inspector.component';
     SearchFormComponent,
     ThemeSelectorComponent,
     FormInspectorComponent,
+    FormTestComponent,
 
     // Directives
     RtlSupportDirective,

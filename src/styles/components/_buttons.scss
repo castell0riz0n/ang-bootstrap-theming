@@ -1,26 +1,28 @@
 /*
  * Button styling enhancements
+ * Revised to work properly with size variations
  */
 
-// Base button styles
+// Base button styles - with reduced use of !important
 .btn {
-  padding-top: 0.375rem !important;
-  padding-bottom: 0.375rem !important;
-  line-height: 1.5 !important;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
   transition: all 0.2s ease-in-out;
 }
 
-// Button sizes
+// Button sizes - these need to override the base button
 .btn-sm {
-  height: 31px !important;
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
+  height: 31px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
 }
 
 .btn-lg {
-  height: 48px !important;
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
+  height: 48px;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.375rem;
 }
 
 // Icon alignment in buttons
@@ -59,6 +61,7 @@ body.rtl {
 .btn-outline-accent {
   color: var(--accent);
   border-color: var(--accent);
+  background-color: transparent;
 }
 
 .btn-outline-accent:hover {
@@ -68,21 +71,29 @@ body.rtl {
 
 // Radio and checkbox button styles
 .btn-check:checked + .btn-outline-primary {
-  background-color: var(--bs-primary);
+  background-color: var(--primary);
   color: white;
 }
 
-// Focus states
+// Focus states - slightly more specific to avoid bootstrap overrides
 .btn:focus,
+.btn.focus,
 .btn:focus-visible {
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
 }
 
 // Button groups
 .btn-group {
-  .btn {
-    // Ensure consistent height in button groups
-    height: 38px !important;
+  .btn:not(.btn-sm):not(.btn-lg) {
+    height: 38px;
+  }
+
+  .btn-sm {
+    height: 31px;
+  }
+
+  .btn-lg {
+    height: 48px;
   }
 }
 
@@ -111,5 +122,27 @@ body.rtl {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+// Custom .btn-book used in flight cards
+.btn-book {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+
+  &:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .btn-lg {
+    height: 44px;
+    padding: 0.5rem 1rem;
+    font-size: 1.125rem;
   }
 }

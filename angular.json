@@ -45,8 +45,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "public/css/form-height-normalization.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/@popperjs/core/dist/umd/popper.min.js",

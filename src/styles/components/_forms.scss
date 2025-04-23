@@ -1,47 +1,61 @@
 /*
  * Form styling enhancements
+ * Uses a more targeted approach to form height normalization
  */
 
-// Form height normalization
+// Base form control styles - no !important flags for better override control
 .form-control,
 .form-select,
-.btn,
-.input-group,
-.input-group-text {
+.input-group {
   box-sizing: border-box;
-  height: 38px !important;
-  min-height: 38px !important;
+  height: 38px;
+  line-height: 1.5;
 }
 
-// Standardize padding to ensure content aligns properly
+// Basic button normalization - without !important for size variations to work
+.btn:not(.btn-sm):not(.btn-lg) {
+  height: 38px;
+  min-height: 38px;
+  line-height: 1.5;
+}
+
+// Consistent padding - without !important where possible
 .form-control,
 .form-select {
-  padding-top: 0.375rem !important;
-  padding-bottom: 0.375rem !important;
-  line-height: 1.5 !important;
+  padding: 0.375rem 0.75rem;
 }
 
-// Ensure consistent height for input groups
+// Fix for input groups to ensure inner elements align correctly
 .input-group > .form-control,
 .input-group > .form-select {
-  height: 38px !important;
+  height: 38px;
+}
+
+// Input group styling
+.input-group-text {
+  display: flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  height: 38px;
 }
 
 // Fix for date inputs which can vary across browsers
 input[type="date"].form-control {
-  height: 38px !important;
+  height: 38px;
 }
 
-// Ensure RTL and LTR have the same heights
-body.rtl .form-control,
-body.rtl .form-select,
-body.rtl .btn,
-body.rtl .input-group-text,
-body.ltr .form-control,
-body.ltr .form-select,
-body.ltr .btn,
-body.ltr .input-group-text {
-  height: 38px !important;
+// For multi-line inputs that need height flexibility
+textarea.form-control {
+  height: auto;
+  min-height: 38px;
+}
+
+// For floating labels that need to be taller
+.form-floating > .form-control,
+.form-floating > .form-select {
+  height: 58px;
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
 }
 
 // Form label contrast fixes
@@ -55,17 +69,17 @@ body.ltr .input-group-text {
 // Base label styling for light mode
 body:not(.dark-mode):not(.theme-dark):not(.theme-green-orange-dark):not(.theme-indigo-dark) {
   .form-label {
-    color: var(--form-label-color-light) !important;
+    color: var(--form-label-color-light);
     font-weight: 500;
   }
 
   .text-muted,
   .form-text {
-    color: var(--form-label-muted-light) !important;
+    color: var(--form-label-muted-light);
   }
 
   .input-group-text {
-    color: white !important; /* Ensure text is visible on colored backgrounds */
+    color: white; /* Ensure text is visible on colored backgrounds */
   }
 }
 
@@ -75,62 +89,43 @@ body.theme-dark,
 body.theme-green-orange-dark,
 body.theme-indigo-dark {
   .form-label {
-    color: var(--form-label-color-dark) !important;
+    color: var(--form-label-color-dark);
     font-weight: 500;
   }
 
   .text-muted,
   .form-text {
-    color: var(--form-label-muted-dark) !important;
+    color: var(--form-label-muted-dark);
   }
 }
 
 // Fix for placeholder text
 ::-webkit-input-placeholder {
-  color: rgba(var(--bs-body-color-rgb), 0.6) !important;
+  color: rgba(var(--bs-body-color-rgb), 0.6);
 }
 ::-moz-placeholder {
-  color: rgba(var(--bs-body-color-rgb), 0.6) !important;
+  color: rgba(var(--bs-body-color-rgb), 0.6);
 }
 :-ms-input-placeholder {
-  color: rgba(var(--bs-body-color-rgb), 0.6) !important;
+  color: rgba(var(--bs-body-color-rgb), 0.6);
 }
 :-moz-placeholder {
-  color: rgba(var(--bs-body-color-rgb), 0.6) !important;
+  color: rgba(var(--bs-body-color-rgb), 0.6);
 }
 
 // Fix for floating labels
 .form-floating > label {
-  color: rgba(var(--bs-body-color-rgb), 0.65) !important;
-}
-
-// For floating labels that need to be taller
-.form-floating > .form-control,
-.form-floating > .form-select {
-  height: 58px !important;
-}
-
-// For multi-line inputs
-textarea.form-control {
-  height: auto !important;
-}
-
-// Input group styling
-.input-group-text {
-  display: flex;
-  align-items: center;
-  padding-top: 0.375rem !important;
-  padding-bottom: 0.375rem !important;
-  line-height: 1.5 !important;
+  color: rgba(var(--bs-body-color-rgb), 0.65);
+  padding: 0.625rem 0.75rem;
 }
 
 // Form validation styles
 .valid-feedback {
-  color: var(--success) !important;
+  color: var(--success);
 }
 
 .invalid-feedback {
-  color: var(--danger) !important;
+  color: var(--danger);
 }
 
 // Disabled form elements
@@ -144,6 +139,30 @@ textarea.form-control {
 .form-label.disabled,
 .form-label.text-muted {
   opacity: 0.65;
+}
+
+// RTL-specific form adjustments
+body.rtl {
+  .form-control,
+  .form-select {
+    text-align: right;
+  }
+
+  .form-check {
+    padding-right: 1.5em;
+    padding-left: 0;
+
+    .form-check-input {
+      float: right;
+      margin-right: -1.5em;
+      margin-left: 0;
+    }
+  }
+
+  .form-floating > label {
+    right: 0;
+    left: auto;
+  }
 }
 
 // Search form specific styles
