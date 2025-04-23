@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
 
     // Set theme based on user preference or system preference
     const savedTheme = localStorage.getItem('theme-preference');
-    if (savedTheme && ['light', 'dark', 'green-orange-light', 'green-orange-dark'].includes(savedTheme)) {
+    if (savedTheme && ['light', 'dark', 'green-orange-light', 'green-orange-dark', 'indigo-light', 'indigo-dark'].includes(savedTheme)) {
       this.themeDirectionService.setTheme(savedTheme as any);
     } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       // Use dark theme if system prefers it

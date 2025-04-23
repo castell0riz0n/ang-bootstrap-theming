@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { LanguageService } from '../../_core/services/language.service';
 import { ThemeDirectionService } from '../../_core/services/theme-direction.service';
 
@@ -10,96 +10,107 @@ import { ThemeDirectionService } from '../../_core/services/theme-direction.serv
     <div class="container my-5" [appRtlSupport]="(languageService.currentLanguage$ | async)?.direction!">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title mb-4">Form Height Test</h2>
+          <h2 class="card-title mb-4">Form Controls Size Test</h2>
 
-          <p class="mb-4">This component is designed to test form heights and ensure consistent styling.</p>
+          <p class="mb-4">This component tests form control sizing and ensures consistent styling.</p>
 
           <form [formGroup]="testForm">
-            <!-- Form Control Height Test Section -->
+            <!-- Default Size Controls -->
             <div class="mb-4 p-3 border">
-              <h5>Height Test: Default Form Controls</h5>
+              <h5>Default Size</h5>
               <div class="row g-3 align-items-center">
-                <div class="col">
-                  <label for="textInput" class="form-label">Text input</label>
-                  <input #textInput type="text" class="form-control" id="textInput" formControlName="text" placeholder="Text input">
+                <div class="col-md-4">
+                  <label for="defaultInput" class="form-label">Input</label>
+                  <input #defaultInput type="text" class="form-control" id="defaultInput" formControlName="defaultInput" placeholder="Default input">
                 </div>
-                <div class="col">
-                  <label for="dateInput" class="form-label">Date input</label>
-                  <input #dateInput type="date" class="form-control" id="dateInput" formControlName="date">
-                </div>
-                <div class="col">
-                  <label for="selectInput" class="form-label">Select input</label>
-                  <select #selectInput class="form-select" id="selectInput" formControlName="select">
-                    <option value="">Select option</option>
+                <div class="col-md-4">
+                  <label for="defaultSelect" class="form-label">Select</label>
+                  <select #defaultSelect class="form-select" id="defaultSelect" formControlName="defaultSelect">
+                    <option value="">Default select</option>
                     <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
                   </select>
                 </div>
-                <div class="col">
-                  <label for="buttonTest" class="form-label">Default Button</label>
+                <div class="col-md-4">
+                  <label for="defaultBtn" class="form-label">Button</label>
                   <div>
-                    <button #buttonDefault id="buttonTest" class="btn btn-primary">Default</button>
+                    <button #defaultBtn id="defaultBtn" class="btn btn-primary">Default</button>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Button Size Test Section -->
-            <div class="mb-4 p-3 border">
-              <h5>Height Test: Button Sizes</h5>
-              <div class="d-flex align-items-end gap-3 flex-wrap">
-                <div>
-                  <label class="form-label">Small Button</label>
-                  <div>
-                    <button #buttonSm class="btn btn-sm btn-primary">Small</button>
-                  </div>
-                </div>
-                <div>
-                  <label class="form-label">Default Button</label>
-                  <div>
-                    <button class="btn btn-primary">Default</button>
-                  </div>
-                </div>
-                <div>
-                  <label class="form-label">Large Button</label>
-                  <div>
-                    <button #buttonLg class="btn btn-lg btn-primary">Large</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Additional Form Elements -->
-            <div class="mb-4 p-3 border">
-              <h5>Additional Form Elements</h5>
-
-              <!-- Input with help text -->
-              <div class="mb-3">
-                <label for="helpTextInput" class="form-label">Input with help text</label>
-                <input type="text" class="form-control" id="helpTextInput" formControlName="helpText">
-                <div class="form-text">This is some help text for the input above.</div>
-              </div>
-
-              <!-- Input group -->
-              <div class="mb-3">
-                <label for="inputGroup" class="form-label">Input group</label>
-                <div class="input-group">
+              <div class="mt-3">
+                <label for="defaultInputGroup" class="form-label">Input Group</label>
+                <div #defaultInputGroup class="input-group">
                   <span class="input-group-text">$</span>
-                  <input #inputGroup type="number" class="form-control" id="inputGroup" formControlName="inputGroup">
+                  <input type="text" class="form-control" placeholder="Amount">
                   <span class="input-group-text">.00</span>
                 </div>
               </div>
+            </div>
 
-              <!-- Textarea -->
-              <div class="mb-3">
-                <label for="textarea" class="form-label">Textarea</label>
-                <textarea class="form-control" id="textarea" rows="3" formControlName="textarea"></textarea>
+            <!-- Large Size Controls -->
+            <div class="mb-4 p-3 border">
+              <h5>Large Size</h5>
+              <div class="row g-3 align-items-center">
+                <div class="col-md-4">
+                  <label for="lgInput" class="form-label">Input</label>
+                  <input #lgInput type="text" class="form-control form-control-lg" id="lgInput" formControlName="lgInput" placeholder="Large input">
+                </div>
+                <div class="col-md-4">
+                  <label for="lgSelect" class="form-label">Select</label>
+                  <select #lgSelect class="form-select form-select-lg" id="lgSelect" formControlName="lgSelect">
+                    <option value="">Large select</option>
+                    <option value="1">Option 1</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="lgBtn" class="form-label">Button</label>
+                  <div>
+                    <button #lgBtn id="lgBtn" class="btn btn-lg btn-primary">Large</button>
+                  </div>
+                </div>
               </div>
 
-              <!-- Floating label -->
-              <div class="form-floating mb-3">
-                <input #floatingInput type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="floatingInput">
-                <label for="floatingInput">Floating label</label>
+              <div class="mt-3">
+                <label for="lgInputGroup" class="form-label">Input Group (Large)</label>
+                <div #lgInputGroup class="input-group input-group-lg">
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" placeholder="Amount">
+                  <span class="input-group-text">.00</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Small Size Controls -->
+            <div class="mb-4 p-3 border">
+              <h5>Small Size</h5>
+              <div class="row g-3 align-items-center">
+                <div class="col-md-4">
+                  <label for="smInput" class="form-label">Input</label>
+                  <input #smInput type="text" class="form-control form-control-sm" id="smInput" formControlName="smInput" placeholder="Small input">
+                </div>
+                <div class="col-md-4">
+                  <label for="smSelect" class="form-label">Select</label>
+                  <select #smSelect class="form-select form-select-sm" id="smSelect" formControlName="smSelect">
+                    <option value="">Small select</option>
+                    <option value="1">Option 1</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="smBtn" class="form-label">Button</label>
+                  <div>
+                    <button #smBtn id="smBtn" class="btn btn-sm btn-primary">Small</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <label for="smInputGroup" class="form-label">Input Group (Small)</label>
+                <div #smInputGroup class="input-group input-group-sm">
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" placeholder="Amount">
+                  <span class="input-group-text">.00</span>
+                </div>
               </div>
             </div>
 
@@ -144,14 +155,23 @@ export class FormTestComponent implements AfterViewInit {
   heightsVisible = false;
   heightMeasurements: any[] = [];
 
-  @ViewChild('textInput') textInput!: ElementRef;
-  @ViewChild('dateInput') dateInput!: ElementRef;
-  @ViewChild('selectInput') selectInput!: ElementRef;
-  @ViewChild('buttonDefault') buttonDefault!: ElementRef;
-  @ViewChild('buttonSm') buttonSm!: ElementRef;
-  @ViewChild('buttonLg') buttonLg!: ElementRef;
-  @ViewChild('inputGroup') inputGroup!: ElementRef;
-  @ViewChild('floatingInput') floatingInput!: ElementRef;
+  // Default size elements
+  @ViewChild('defaultInput') defaultInput!: ElementRef;
+  @ViewChild('defaultSelect') defaultSelect!: ElementRef;
+  @ViewChild('defaultBtn') defaultBtn!: ElementRef;
+  @ViewChild('defaultInputGroup') defaultInputGroup!: ElementRef;
+
+  // Large size elements
+  @ViewChild('lgInput') lgInput!: ElementRef;
+  @ViewChild('lgSelect') lgSelect!: ElementRef;
+  @ViewChild('lgBtn') lgBtn!: ElementRef;
+  @ViewChild('lgInputGroup') lgInputGroup!: ElementRef;
+
+  // Small size elements
+  @ViewChild('smInput') smInput!: ElementRef;
+  @ViewChild('smSelect') smSelect!: ElementRef;
+  @ViewChild('smBtn') smBtn!: ElementRef;
+  @ViewChild('smInputGroup') smInputGroup!: ElementRef;
 
   constructor(
     private fb: FormBuilder,
@@ -159,13 +179,12 @@ export class FormTestComponent implements AfterViewInit {
     public themeService: ThemeDirectionService
   ) {
     this.testForm = this.fb.group({
-      text: [''],
-      date: [''],
-      select: [''],
-      helpText: [''],
-      inputGroup: [''],
-      textarea: [''],
-      floatingInput: ['']
+      defaultInput: [''],
+      defaultSelect: [''],
+      lgInput: [''],
+      lgSelect: [''],
+      smInput: [''],
+      smSelect: ['']
     });
   }
 
@@ -222,14 +241,23 @@ export class FormTestComponent implements AfterViewInit {
     this.heightMeasurements = [];
 
     const elements = [
-      { name: 'Text Input', el: this.textInput?.nativeElement },
-      { name: 'Date Input', el: this.dateInput?.nativeElement },
-      { name: 'Select Input', el: this.selectInput?.nativeElement },
-      { name: 'Default Button', el: this.buttonDefault?.nativeElement },
-      { name: 'Small Button', el: this.buttonSm?.nativeElement },
-      { name: 'Large Button', el: this.buttonLg?.nativeElement },
-      { name: 'Input Group', el: this.inputGroup?.nativeElement },
-      { name: 'Floating Input', el: this.floatingInput?.nativeElement }
+      // Default size
+      { name: 'Default Input', el: this.defaultInput?.nativeElement },
+      { name: 'Default Select', el: this.defaultSelect?.nativeElement },
+      { name: 'Default Button', el: this.defaultBtn?.nativeElement },
+      { name: 'Default Input Group', el: this.defaultInputGroup?.nativeElement },
+
+      // Large size
+      { name: 'Large Input', el: this.lgInput?.nativeElement },
+      { name: 'Large Select', el: this.lgSelect?.nativeElement },
+      { name: 'Large Button', el: this.lgBtn?.nativeElement },
+      { name: 'Large Input Group', el: this.lgInputGroup?.nativeElement },
+
+      // Small size
+      { name: 'Small Input', el: this.smInput?.nativeElement },
+      { name: 'Small Select', el: this.smSelect?.nativeElement },
+      { name: 'Small Button', el: this.smBtn?.nativeElement },
+      { name: 'Small Input Group', el: this.smInputGroup?.nativeElement },
     ];
 
     elements.forEach(item => {
