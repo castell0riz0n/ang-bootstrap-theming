@@ -1,0 +1,114 @@
+/*
+ * Card styling enhancements
+ */
+
+// Base card styles
+.card {
+  border-radius: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+// Card hover effect
+.card.hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+  :root.dark-mode &,
+  body.theme-dark &,
+  body.theme-green-orange-dark &,
+  body.theme-indigo-dark & {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Card header styling
+.card-header {
+  border-bottom: 1px solid rgba(var(--bs-border-color-rgb), 0.5);
+  background-color: rgba(var(--bs-body-bg-rgb), 0.03);
+  padding: 1rem;
+}
+
+// Card title
+.card-title {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+// Card with primary border accent
+.card-accent-primary {
+  border-top: 3px solid var(--primary);
+}
+
+// Card with accent border
+.card-accent-accent {
+  border-top: 3px solid var(--accent);
+}
+
+// Card with custom border color
+@each $color, $value in (primary, secondary, success, info, warning, danger, accent) {
+  .card-border-#{$color} {
+    border-color: var(--#{$color});
+  }
+}
+
+// Card with primary left border
+.card-left-border-primary {
+  border-left: 4px solid var(--primary);
+
+  body.rtl & {
+    border-left: 0;
+    border-right: 4px solid var(--primary);
+  }
+}
+
+// Card with different density options
+.card-compact {
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+.card-comfortable {
+  .card-body {
+    padding: 2rem;
+  }
+}
+
+// Card with flat design (no shadow)
+.card-flat {
+  box-shadow: none !important;
+}
+
+// Card with elevated design (more shadow)
+.card-elevated {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  :root.dark-mode &,
+  body.theme-dark &,
+  body.theme-green-orange-dark &,
+  body.theme-indigo-dark & {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+}
+
+// Feature card (in home component)
+.feature-card {
+  height: 100%;
+  padding: 2rem;
+  border-radius: 10px;
+  border-top: 3px solid var(--primary);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    :root.dark-mode &,
+    body.theme-dark &,
+    body.theme-green-orange-dark &,
+    body.theme-indigo-dark & {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+  }
+}

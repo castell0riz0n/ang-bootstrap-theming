@@ -1,0 +1,154 @@
+/*
+ * Spacing utilities
+ */
+
+// Gap utilities
+.gap-xs {
+  gap: var(--spacing-xs);
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
+
+.gap-xl {
+  gap: var(--spacing-xl);
+}
+
+// Vertical rhythm spacing
+.vr-xs > * + * {
+  margin-top: var(--spacing-xs);
+}
+
+.vr-sm > * + * {
+  margin-top: var(--spacing-sm);
+}
+
+.vr-md > * + * {
+  margin-top: var(--spacing-md);
+}
+
+.vr-lg > * + * {
+  margin-top: var(--spacing-lg);
+}
+
+.vr-xl > * + * {
+  margin-top: var(--spacing-xl);
+}
+
+// Space between utilities
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.space-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+// Advanced spacing utilities
+.p-section {
+  padding: var(--spacing-xl) 0;
+}
+
+.p-section-lg {
+  padding: var(--spacing-xxl) 0;
+}
+
+.p-section-sm {
+  padding: var(--spacing-lg) 0;
+}
+
+// Horizontal padding utilities
+.px-content {
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+
+  @media (min-width: 768px) {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  @media (min-width: 1200px) {
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+  }
+}
+
+// RTL-aware margin utilities
+.ms-auto-rtl {
+  margin-left: auto;
+
+  body.rtl & {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
+.me-auto-rtl {
+  margin-right: auto;
+
+  body.rtl & {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+// Responsive spacers
+.spacer-h {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    width: var(--spacing-md);
+    flex-shrink: 0;
+  }
+}
+
+.spacer-v {
+  display: block;
+  height: var(--spacing-md);
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+// Shadow utilities
+.shadow-hover {
+  transition: box-shadow var(--transition-medium);
+
+  &:hover {
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}

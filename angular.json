@@ -37,11 +37,16 @@
                 "glob": "**/*",
                 "input": "public",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*.css",
+                "input": "src/styles/themes",
+                "output": "assets/css"
               }
             ],
             "styles": [
-              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "public/css/form-height-normalization.css"
             ],
             "scripts": [
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
@@ -49,6 +54,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
+                "public/css",
                 "src/styles",
                 "node_modules"
               ]
@@ -116,6 +122,7 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
+                "public/css",
                 "src/styles",
                 "node_modules"
               ]

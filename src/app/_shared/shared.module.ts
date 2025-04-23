@@ -18,6 +18,7 @@ import {RtlSupportDirective} from './directives/rtl-support.directive';
 import {DurationPipe} from './pipes/duration.pipe';
 import {SearchFormComponent} from './components/search-form.component';
 import {ThemeSelectorComponent} from './components/theme-selector/theme-selector.component';
+import {FormInspectorComponent} from './components/form-inspector.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import {ThemeSelectorComponent} from './components/theme-selector/theme-selector
     FlightCardComponent,
     SearchFormComponent,
     ThemeSelectorComponent,
+    FormInspectorComponent,
+
     // Directives
     RtlSupportDirective,
 
@@ -58,6 +61,7 @@ import {ThemeSelectorComponent} from './components/theme-selector/theme-selector
     FlightCardComponent,
     SearchFormComponent,
     ThemeSelectorComponent,
+    FormInspectorComponent,
 
     // Directives
     RtlSupportDirective,

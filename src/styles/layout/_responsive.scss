@@ -1,0 +1,150 @@
+/*
+ * Responsive adjustments
+ */
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  // Header/navbar adjustments
+  .navbar-collapse {
+    padding: 1rem 0;
+  }
+
+  // Reduce paddings
+  .card-body {
+    padding: 1rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  // Stack buttons
+  .d-flex.gap-2 {
+    flex-direction: column;
+
+    .btn {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  // Adjust spacing
+  section {
+    padding: 2rem 0;
+  }
+
+  .my-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  // Language and theme selectors
+  .d-flex {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .me-3, .me-2 {
+    margin-right: 0 !important;
+    margin-bottom: 1rem;
+
+    .rtl & {
+      margin-left: 0 !important;
+    }
+  }
+
+  // Authentication buttons
+  .auth-buttons {
+    width: 100%;
+    flex-direction: column;
+
+    .btn {
+      margin: 0.25rem 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  // Flight card adjustments
+  .flight-card {
+    .airline-logo {
+      width: 30px;
+      height: 30px;
+    }
+
+    .time {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+  // Reduce font sizes
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
+  // Adjust spacings
+  .hero-section {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
+
+// For very small devices (phones, less than 576px)
+@media (max-width: 575.98px) {
+  // Stack grid items
+  .row:not(.g-0) > [class^="col-"] {
+    margin-bottom: 1rem;
+  }
+
+  // Reduce margins and paddings
+  .hero-section {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .search-panel {
+    padding: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  // Adjust buttons
+  .btn-lg {
+    padding: 0.375rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+// RTL specific media queries
+@media (max-width: 767.98px) {
+  body.rtl {
+    .ms-auto {
+      margin-right: auto !important;
+      margin-left: 0 !important;
+    }
+
+    // Fix RTL stacking in mobile
+    .d-flex.gap-2 {
+      align-items: flex-end;
+    }
+  }
+}

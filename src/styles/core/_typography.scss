@@ -1,0 +1,56 @@
+/*
+ * Typography styles
+ */
+
+// Note: Primary font definitions are in fonts.css
+// This file contains only typography enhancements and adjustments
+
+body {
+  font-family: var(--font-family-ltr);
+  line-height: 1.5;
+}
+
+body.rtl {
+  font-family: var(--font-family-rtl);
+  text-align: right;
+}
+
+// Heading styles
+h1, .h1 {
+  font-weight: 700;
+}
+
+h2, .h2 {
+  font-weight: 600;
+}
+
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-weight: 500;
+}
+
+// Hero heading styles
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+// Responsive typography adjustments
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+}

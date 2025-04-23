@@ -1,0 +1,122 @@
+/*
+ * Hero section styles
+ */
+
+// Base hero section
+.hero-section {
+  background-color: var(--primary);
+  color: white;
+  padding: 5rem 0;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+// Accent line at bottom of hero
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, var(--accent), var(--accent-light));
+}
+
+// Hero title
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+// Hero subtitle
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+// Hero image
+.hero-image {
+  max-height: 400px;
+}
+
+// Hero search form container
+.search-form-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+// Dark theme adjustments
+body.dark-mode,
+body.theme-dark,
+body.theme-green-orange-dark,
+body.theme-indigo-dark {
+  .hero-section {
+    background-color: var(--dark-dark);
+  }
+
+  .search-form-container {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .hero-section {
+    padding: 3rem 0;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .search-form-container {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 2rem 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .search-form-container {
+    padding: 1rem;
+  }
+}
+
+// Secondary hero variant
+.hero-section-secondary {
+  background-color: var(--secondary);
+
+  &::after {
+    background: linear-gradient(to right, var(--primary), var(--primary-light));
+  }
+}
+
+// Accent hero variant
+.hero-section-accent {
+  background-color: var(--accent);
+  color: #212121;
+
+  &::after {
+    background: linear-gradient(to right, var(--primary), var(--primary-light));
+  }
+}
+
+// Hero with pattern background
+.hero-section-pattern {
+  background-color: var(--primary);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}

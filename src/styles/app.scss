@@ -1,0 +1,24 @@
+/*
+ * Application-specific styles and enhancements
+ */
+
+// Core styles
+@import "core/variables";
+@import "core/reset";
+@import "core/typography";
+@import "core/animations";
+
+// Utility styles
+@import "utils/accessibility";
+@import "utils/rtl-utils";
+@import "utils/spacing";
+
+// Component styles
+@import "components/forms";
+@import "components/buttons";
+@import "components/cards";
+@import "components/flight-cards";
+@import "components/hero";
+
+// Layout styles
+@import "layout/responsive";

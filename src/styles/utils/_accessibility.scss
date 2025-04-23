@@ -1,0 +1,56 @@
+/*
+ * Accessibility utilities
+ */
+
+// Screen reader only class
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Focus visibility enhancement
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+// High contrast mode support
+@media (forced-colors: active) {
+  .btn {
+    border: 1px solid transparent;
+  }
+
+  .card {
+    border: 1px solid currentColor;
+  }
+}
+
+// Keyboard navigation enhancements
+.keyboard-user :focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+// Form label contrast fix
+.form-label {
+  color: var(--bs-body-color);
+  font-weight: 500;
+}
+
+// Form validation - make it more accessible
+.invalid-feedback {
+  font-weight: 500;
+}
+
+// Improved color contrast for form placeholders
+::placeholder {
+  color: rgba(var(--bs-body-color-rgb), 0.65);
+  opacity: 1;
+}

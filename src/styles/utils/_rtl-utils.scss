@@ -1,0 +1,85 @@
+/*
+ * RTL specific utilities
+ * These supplement the Bootstrap RTL CSS and provide custom app-specific RTL fixes
+ */
+
+// Special class to flip icons in RTL mode
+.flip-rtl {
+  body.rtl & {
+    transform: scaleX(-1);
+  }
+}
+
+// Form check (checkboxes & radios) RTL fixes
+body.rtl .form-check {
+  padding-right: 1.5em;
+  padding-left: 0;
+
+  .form-check-input {
+    float: right;
+    margin-right: -1.5em;
+    margin-left: 0;
+  }
+}
+
+// Margin overrides for RTL mode
+body.rtl {
+  .me-1, .me-2, .me-3, .me-4, .me-5 {
+    margin-right: 0 !important;
+  }
+
+  .me-1 { margin-left: 0.25rem !important; }
+  .me-2 { margin-left: 0.5rem !important; }
+  .me-3 { margin-left: 1rem !important; }
+  .me-4 { margin-left: 1.5rem !important; }
+  .me-5 { margin-left: 3rem !important; }
+
+  .ms-1, .ms-2, .ms-3, .ms-4, .ms-5 {
+    margin-left: 0 !important;
+  }
+
+  .ms-1 { margin-right: 0.25rem !important; }
+  .ms-2 { margin-right: 0.5rem !important; }
+  .ms-3 { margin-right: 1rem !important; }
+  .ms-4 { margin-right: 1.5rem !important; }
+  .ms-5 { margin-right: 3rem !important; }
+}
+
+// Card border fix for RTL
+body.rtl .flight-card {
+  border-left: none !important;
+  border-right: 4px solid var(--primary) !important;
+}
+
+// Fix for Bootstrap directional icons
+body.rtl {
+  .bi-arrow-left:before { content: "\f138"; } /* Bootstrap icon for right arrow */
+  .bi-arrow-right:before { content: "\f12a"; } /* Bootstrap icon for left arrow */
+  .bi-chevron-left:before { content: "\f285"; } /* Bootstrap icon for right chevron */
+  .bi-chevron-right:before { content: "\f284"; } /* Bootstrap icon for left chevron */
+}
+
+// Timeline component RTL fixes
+body.rtl .timeline {
+  padding-left: 0;
+  padding-right: 2rem;
+
+  &::before {
+    left: auto;
+    right: 9px;
+  }
+
+  .timeline-point {
+    left: auto;
+    right: -2rem;
+  }
+}
+
+// Directional text alignments
+body.rtl .text-start {
+  text-align: right !important;
+}
+
+body.rtl .text-end {
+  text-align: left !important;
+}

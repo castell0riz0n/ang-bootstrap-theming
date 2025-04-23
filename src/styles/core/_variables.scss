@@ -1,0 +1,101 @@
+/*
+ * Global variables
+ * These extend the CSS variables defined in theme files
+ */
+
+// Spacing variables
+:root {
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+
+  // Border radius
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 2rem;
+
+  // Transitions
+  --transition-fast: 0.15s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  // Shadows
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 14px 28px rgba(0, 0, 0, 0.25);
+
+  // Z-index layers
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+
+  // Grid breakpoints
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+}
+
+// Dark mode shadow adjustments
+body.dark-mode,
+body.theme-dark,
+body.theme-green-orange-dark,
+body.theme-indigo-dark {
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 14px 28px rgba(0, 0, 0, 0.5);
+}
+
+// Animation variables
+:root {
+  --animation-fast: 0.15s;
+  --animation-medium: 0.3s;
+  --animation-slow: 0.5s;
+
+  --easing-default: ease;
+  --easing-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --easing-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+// Form control variables
+:root {
+  --input-height: 38px;
+  --input-padding-x: 0.75rem;
+  --input-padding-y: 0.375rem;
+  --input-border-width: 1px;
+  --input-border-radius: 0.375rem;
+
+  --input-font-size: 1rem;
+  --input-line-height: 1.5;
+
+  --input-placeholder-color: rgba(var(--bs-body-color-rgb), 0.6);
+}
+
+// Sizing variables
+:root {
+  --header-height: 60px;
+  --footer-height: 120px;
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 60px;
+}
+
+// Custom component variables
+:root {
+  --flight-card-border-width: 4px;
+  --search-panel-padding: 2rem;
+
+  --hero-padding-y: 5rem;
+  --hero-accent-height: 5px;
+}

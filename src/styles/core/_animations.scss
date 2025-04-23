@@ -1,0 +1,64 @@
+/*
+ * Animation definitions
+ */
+
+// Language transition animation
+.language-transition * {
+  transition: transform 0.3s ease,
+  margin 0.3s ease,
+  padding 0.3s ease,
+  left 0.3s ease,
+  right 0.3s ease,
+  text-align 0.3s ease;
+}
+
+// Fade-in animation
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// Slide-in animation (directionally aware)
+.slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// RTL-specific animations
+body.rtl .slide-in-right {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// Hover transitions
+.transition-transform {
+  transition: transform 0.2s ease-in-out;
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}

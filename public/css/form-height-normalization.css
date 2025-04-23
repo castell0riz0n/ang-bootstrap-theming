@@ -1,0 +1,96 @@
+/*
+ * Form Height Normalization
+ * This CSS ensures consistent heights across all form elements
+ * Add this to your global styles.scss file
+ */
+
+/* Global form control normalization */
+.form-control,
+.form-select,
+.btn,
+.input-group,
+.input-group-text {
+  /* Enforce exact height using box-sizing: border-box */
+  box-sizing: border-box;
+  height: 38px !important; /* Set exact height for all elements */
+  min-height: 38px !important; /* Ensure minimum height is also consistent */
+}
+
+/* Standardize padding to ensure content aligns properly */
+.form-control,
+.form-select {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Ensure buttons use the same padding */
+.btn {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Fix for input groups to ensure inner elements align correctly */
+.input-group > .form-control,
+.input-group > .form-select {
+  height: 38px !important;
+}
+
+/* Ensure consistent height for input group text (prepend/append) */
+.input-group-text {
+  display: flex;
+  align-items: center;
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Fix for date inputs which can vary across browsers */
+input[type="date"].form-control {
+  height: 38px !important;
+}
+
+/* Ensure RTL and LTR have the same heights */
+body.rtl .form-control,
+body.rtl .form-select,
+body.rtl .btn,
+body.rtl .input-group-text,
+body.ltr .form-control,
+body.ltr .form-select,
+body.ltr .btn,
+body.ltr .input-group-text {
+  height: 38px !important;
+}
+
+/* Ensure Bootstrap floating labels work with fixed heights */
+.form-floating > .form-control,
+.form-floating > .form-select {
+  height: 58px !important; /* These need to be taller for floating labels */
+}
+
+/* For multi-line inputs that need to be taller */
+textarea.form-control {
+  height: auto !important;
+}
+
+/* For different button sizes, maintain proportions but enforce consistent base size */
+.btn-sm {
+  height: 31px !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+.btn-lg {
+  height: 48px !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Fix any specific components with known height issues */
+.search-form .form-control,
+.search-form .form-select,
+.search-form .btn,
+.search-form .input-group-text {
+  height: 38px !important;
+}

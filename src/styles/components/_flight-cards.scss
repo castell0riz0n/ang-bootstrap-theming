@@ -1,0 +1,140 @@
+/*
+ * Flight card specific styles
+ */
+
+// Base flight card styling
+.flight-card {
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-left: 4px solid var(--primary);
+
+  body.rtl & {
+    border-left: none;
+    border-right: 4px solid var(--primary);
+  }
+}
+
+// Hover effect
+.flight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+
+  :root.dark-mode &,
+  body.theme-dark &,
+  body.theme-green-orange-dark &,
+  body.theme-indigo-dark & {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Airline logo styling
+.airline-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+// Airline name styling
+.airline-name {
+  font-weight: 500;
+}
+
+// Flight number styling
+.flight-number {
+  font-size: 0.8rem;
+  color: var(--bs-secondary-color);
+}
+
+// Time display
+.time {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+// Airport code
+.airport {
+  font-weight: 500;
+}
+
+// Flight path visualization
+.path-line {
+  width: 100%;
+  height: 2px;
+  background-color: #e0e0e0;
+  margin: 10px 0;
+  position: relative;
+
+  // Keep path line direction consistent in RTL
+  body.rtl & {
+    direction: ltr;
+  }
+}
+
+// Path dots
+.path-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--bs-primary);
+  position: absolute;
+  top: -3px;
+
+  &.start {
+    left: 0;
+  }
+
+  &.end {
+    right: 0;
+  }
+}
+
+// Price styling
+.price {
+  color: var(--bs-primary);
+  font-weight: 700;
+}
+
+// Flight features badges
+.flight-features {
+  .badge {
+    margin-right: 0.25rem;
+
+    body.rtl & {
+      margin-right: 0;
+      margin-left: 0.25rem;
+    }
+  }
+}
+
+// Book button
+.btn-book {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+}
+
+// Responsive adaptations
+@media (max-width: 768px) {
+  .time {
+    font-size: 1.25rem;
+  }
+
+  .path-line {
+    margin: 5px 0;
+  }
+
+  .flight-features {
+    flex-wrap: wrap;
+
+    .badge {
+      margin-bottom: 0.25rem;
+    }
+  }
+}
