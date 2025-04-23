@@ -42,15 +42,20 @@ export class AppComponent implements OnInit {
     const savedTheme = localStorage.getItem('theme-preference');
     if (savedTheme && ['light', 'dark', 'green-orange-light', 'green-orange-dark', 'indigo-light', 'indigo-dark'].includes(savedTheme)) {
       this.themeDirectionService.setTheme(savedTheme as any);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      // Use dark theme if system prefers it
-      this.themeDirectionService.setTheme('dark');
+    } else {
+      this.themeDirectionService.setTheme('indigo-light');
     }
+
+  // else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  //     // Use dark theme if system prefers it
+  //     this.themeDirectionService.setTheme('indigo-dark');
+  //   }
 
     // Listen for system theme changes if no explicit user preference
     if (!savedTheme && window.matchMedia) {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        const newTheme = e.matches ? 'dark' : 'light';
+        console.log(e.matches);
+        const newTheme = e.matches ? 'indigo-dark' : 'indigo-light';
         this.themeDirectionService.setTheme(newTheme);
       });
     }
