@@ -10,7 +10,10 @@
     "PROFILE": "Profile",
     "LOGIN": "Login",
     "REGISTER": "Register",
-    "LANGUAGE": "Language"
+    "LANGUAGE": "Language",
+    "BREADCRUMB": "Breadcrumb navigation",
+    "GO_BACK": "Go back",
+    "HISTORY": "Navigation history"
   },
   "FLIGHT_SEARCH": {
     "TITLE": "Find your flight",
@@ -47,7 +50,22 @@
     "NO_RESULTS": "No flights found for this search. Please try different dates or destinations.",
     "PLACEHOLDER_TITLE": "Ready to search for flights",
     "PLACEHOLDER_TEXT": "Use the search form to find available flights for your journey.",
-    "USE_FORM": "Enter your travel details to get started."
+    "USE_FORM": "Enter your travel details to get started.",
+    "SWAP_ROUTES": "Swap departure and destination",
+    "PASSENGER": "Passenger",
+    "TRIP_TYPE": "Trip Type",
+    "CABIN_CLASS": "Cabin Class",
+    "ECONOMY": "Economy",
+    "PREMIUM_ECONOMY": "Premium Economy",
+    "BUSINESS": "Business",
+    "FIRST_CLASS": "First Class",
+    "OPTIONS": "Options",
+    "FLEXIBLE_DATES": "Flexible dates ±3 days",
+    "DIRECT_ONLY": "Direct flights only",
+    "COMPACT_MODE": "Compact mode",
+    "MORE_OPTIONS": "More options",
+    "FLIGHT_RESULTS": "Flight Results",
+    "SEARCH": "Search"
   },
   "BOOKING": {
     "PASSENGER_DETAILS": "Passenger Details",

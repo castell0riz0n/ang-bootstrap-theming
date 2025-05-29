@@ -1,0 +1,407 @@
+/*
+ * ADVANCED STICKY SYSTEM CSS
+ * Optimized for performance, accessibility, and cross-browser compatibility
+ */
+
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  /* Sticky System Variables */
+  --sticky-header-height: 60px;
+  --sticky-breadcrumb-height: 52px;
+  --sticky-modify-search-height: 68px;
+  --sticky-total-height: 0px; /* Dynamically calculated */
+
+  /* Animation Variables */
+  --sticky-transition-duration: 0.3s;
+  --sticky-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --sticky-auto-hide-duration: 0.2s;
+
+  /* Z-Index Stack */
+  --sticky-z-header: 1030;
+  --sticky-z-breadcrumb: 1025;
+  --sticky-z-modify-search: 1020;
+  --sticky-z-progress: 9999;
+
+  /* Shadow Variables */
+  --sticky-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --sticky-shadow-dark: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --sticky-backdrop-blur: blur(8px);
+
+  /* Performance Variables */
+  --sticky-will-change: transform, opacity;
+  --sticky-backface-visibility: hidden;
+}
+
+/* Dark Theme Adjustments */
+:root.dark-mode,
+body.theme-dark,
+body.theme-green-orange-dark,
+body.theme-indigo-dark {
+  --sticky-shadow-light: var(--sticky-shadow-dark);
+  --sticky-backdrop-blur: blur(4px); /* Reduced blur for performance */
+}
+
+/* ===== BASE STICKY CONTAINER ===== */
+.sticky-container,
+.advanced-sticky-container {
+  position: relative;
+  width: 100%;
+  contain: layout style; /* CSS Containment for performance */
+}
+
+/* ===== STICKY SECTIONS ===== */
+.sticky-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--bs-body-bg);
+  border-bottom: 1px solid var(--bs-border-color);
+
+  /* Performance Optimizations */
+  will-change: var(--sticky-will-change);
+  backface-visibility: var(--sticky-backface-visibility);
+  transform: translateZ(0); /* Force hardware acceleration */
+
+  /* Transitions */
+  transition:
+    transform var(--sticky-transition-duration) var(--sticky-transition-easing),
+    opacity var(--sticky-transition-duration) ease,
+    box-shadow var(--sticky-transition-duration) ease;
+}
+
+/* Sticky State */
+.has-sticky .sticky-section {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  backdrop-filter: var(--sticky-backdrop-blur);
+  -webkit-backdrop-filter: var(--sticky-backdrop-blur);
+  box-shadow: var(--sticky-shadow-light);
+}
+
+/* ===== SPECIFIC SECTION STYLING ===== */
+.sticky-header {
+  z-index: var(--sticky-z-header);
+  height: var(--sticky-header-height);
+  min-height: var(--sticky-header-height);
+}
+
+.sticky-breadcrumb {
+  z-index: var(--sticky-z-breadcrumb);
+  height: var(--sticky-breadcrumb-height);
+  min-height: var(--sticky-breadcrumb-height);
+}
+
+.sticky-modify-search {
+  z-index: var(--sticky-z-modify-search);
+  min-height: var(--sticky-modify-search-height);
+}
+
+/* ===== AUTO-HIDE FUNCTIONALITY ===== */
+.auto-hide-active .sticky-section {
+  transition-duration: var(--sticky-auto-hide-duration);
+}
+
+.sticky-section.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Staggered hide animation for multiple sections */
+.sticky-header.hidden {
+  transition-delay: 0ms;
+}
+
+.sticky-breadcrumb.hidden {
+  transition-delay: 50ms;
+}
+
+.sticky-modify-search.hidden {
+  transition-delay: 100ms;
+}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--bs-primary), var(--bs-info));
+  z-index: var(--sticky-z-progress);
+  transition: width 0.1s ease-out;
+  transform: translateZ(0);
+}
+
+/* ===== STICKY SPACER ===== */
+.sticky-spacer {
+  height: 0;
+  transition: height var(--sticky-transition-duration) var(--sticky-transition-easing);
+  will-change: height;
+}
+
+.sticky-spacer.active {
+  height: var(--sticky-total-height);
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+.performance-mode .sticky-section {
+  /* Disable expensive effects in performance mode */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  transition-duration: 0.15s !important;
+}
+
+.performance-mode .scroll-progress-bar {
+  display: none; /* Hide progress bar in performance mode */
+}
+
+/* Force GPU acceleration for better performance */
+.sticky-section,
+.sticky-spacer,
+.scroll-progress-bar {
+  transform: translate3d(0, 0, 0);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  :root {
+    --sticky-header-height: 50px;
+    --sticky-breadcrumb-height: 44px;
+    --sticky-modify-search-height: 60px;
+    --sticky-transition-duration: 0.2s;
+  }
+
+  .sticky-section {
+    font-size: 0.9rem;
+  }
+
+  /* Reduce blur on mobile for performance */
+  .has-sticky .sticky-section {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --sticky-header-height: 48px;
+    --sticky-breadcrumb-height: 40px;
+    --sticky-modify-search-height: 56px;
+  }
+
+  .sticky-section {
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== RTL SUPPORT ===== */
+:host-context(.rtl),
+body.rtl {
+  .has-sticky .sticky-section {
+    left: 0;
+    right: 0;
+  }
+
+  .scroll-progress-bar {
+    left: 0;
+    right: auto;
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .sticky-section {
+    border-bottom-width: 2px;
+    border-bottom-color: currentColor;
+  }
+
+  .has-sticky .sticky-section {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 0 0 2px currentColor;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sticky-section,
+  .sticky-spacer,
+  .scroll-progress-bar {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Focus management for keyboard navigation */
+.sticky-section:focus-within {
+  z-index: calc(var(--sticky-z-header) + 1);
+}
+
+/* ===== BROWSER-SPECIFIC OPTIMIZATIONS ===== */
+/* Safari-specific optimizations */
+@supports (-webkit-appearance: none) {
+  .sticky-section {
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Firefox-specific optimizations */
+@-moz-document url-prefix() {
+  .sticky-section {
+    will-change: auto; /* Firefox handles will-change differently */
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .sticky-container,
+  .advanced-sticky-container,
+  .sticky-section,
+  .scroll-progress-bar,
+  .sticky-spacer {
+    position: static !important;
+    transform: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .sticky-section.hidden {
+    display: none !important;
+  }
+}
+
+/* ===== ANIMATION KEYFRAMES ===== */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply entrance animation */
+.has-sticky .sticky-section:not(.hidden) {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.sticky-debug {
+  position: relative;
+}
+
+.sticky-debug::before {
+  content: attr(data-sticky-info);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.sticky-measure {
+  border: 2px dashed red !important;
+  position: relative;
+}
+
+.sticky-measure::after {
+  content: attr(data-height) 'px';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: red;
+  color: white;
+  padding: 0.25rem;
+  font-size: 0.7rem;
+  pointer-events: none;
+}
+
+/* ===== THEME-SPECIFIC OVERRIDES ===== */
+/* Indigo Theme */
+body.theme-indigo-light,
+body.theme-indigo-dark {
+  .scroll-progress-bar {
+    background: linear-gradient(90deg, #393569, #FFD308);
+  }
+}
+
+/* Green Orange Theme */
+body.theme-green-orange-light,
+body.theme-green-orange-dark {
+  .scroll-progress-bar {
+    background: linear-gradient(90deg, #1e5631, #e67e22);
+  }
+}
+
+/* ===== CRITICAL CSS FOR ABOVE-THE-FOLD ===== */
+/* Inline critical CSS for immediate rendering */
+.sticky-container { position: relative; width: 100%; }
+.sticky-section { position: relative; width: 100%; background-color: var(--bs-body-bg, #fff); }
+.has-sticky .sticky-section { position: fixed; left: 0; right: 0; z-index: 1020; }
+
+/* ===== LOADING STATES ===== */
+.sticky-section.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.sticky-section.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ===== CONTAINER QUERIES (Future-proofing) ===== */
+@container (min-width: 768px) {
+  .sticky-section {
+    padding: 0.75rem 0;
+  }
+}
+
+@container (max-width: 767px) {
+  .sticky-section {
+    padding: 0.5rem 0;
+  }
+}

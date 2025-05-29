@@ -1,66 +1,89 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, isDevMode, OnInit} from '@angular/core';
 import { LanguageService } from './_core/services/language.service';
 import { ThemeDirectionService } from './_core/services/theme-direction.service';
-import { Observable } from 'rxjs';
+import {EnhancedStickyLayoutService} from './_core/services/enhanced-sticky-layout.service';
 
 @Component({
   selector: 'app-root',
   standalone: false,
   template: `
-    <div class="app-container">
-      <app-header></app-header>
-      <main class="main-content">
-        <router-outlet></router-outlet>
-      </main>
-      <app-footer></app-footer>
-    </div>
+    <!-- Complete application with sticky system -->
+    <app-layout
+      [showBreadcrumb]="true"
+      [showBreadcrumbActions]="true"
+      [showBreadcrumbHistory]="true"
+      [showModifySearch]="false"
+      [showStickyConfig]="!isProduction">
+    </app-layout>
   `,
   styles: [`
-    .app-container {
-      display: flex;
-      flex-direction: column;
+    :host {
+      display: block;
       min-height: 100vh;
-    }
-
-    .main-content {
-      flex: 1;
-      padding: 20px;
     }
   `]
 })
 export class AppComponent implements OnInit {
+  isProduction = !isDevMode()
+
   constructor(
     private languageService: LanguageService,
-    private themeDirectionService: ThemeDirectionService
+    private themeDirectionService: ThemeDirectionService,
+    private stickyLayoutService: EnhancedStickyLayoutService
   ) {}
 
   ngOnInit(): void {
-    // Initialize the application language
+    this.initializeServices();
+    this.setupStickyDefaults();
+    this.setupDirectionHandling();
+  }
+
+  private initializeServices(): void {
+    // Initialize language service
     this.languageService.initializeLanguage();
 
-    // Set theme based on user preference or system preference
+    // Initialize theme
     const savedTheme = localStorage.getItem('theme-preference');
-    if (savedTheme && ['light', 'dark', 'green-orange-light', 'green-orange-dark', 'indigo-light', 'indigo-dark'].includes(savedTheme)) {
+    if (savedTheme && this.isValidTheme(savedTheme)) {
       this.themeDirectionService.setTheme(savedTheme as any);
     } else {
       this.themeDirectionService.setTheme('indigo-light');
     }
+  }
 
-  // else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  //     // Use dark theme if system prefers it
-  //     this.themeDirectionService.setTheme('indigo-dark');
-  //   }
+  private setupStickyDefaults(): void {
+    // Configure default sticky behavior
+    this.stickyLayoutService.updateConfig({
+      header: {
+        id: 'header',
+        enabled: true,
+        order: 1,
+        className: 'sticky-header',
+        zIndex: 1030
+      },
+      breadcrumb: {
+        id: 'breadcrumb',
+        enabled: true,
+        order: 2,
+        className: 'sticky-breadcrumb',
+        zIndex: 1025
+      },
+      modifySearch: {
+        id: 'modifySearch',
+        enabled: false, // Will be enabled on search pages
+        order: 3,
+        className: 'sticky-modify-search',
+        zIndex: 1020
+      }
+    });
 
-    // Listen for system theme changes if no explicit user preference
-    if (!savedTheme && window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        console.log(e.matches);
-        const newTheme = e.matches ? 'indigo-dark' : 'indigo-light';
-        this.themeDirectionService.setTheme(newTheme);
-      });
+    // Enable auto-hide on mobile devices
+    if (this.isMobileDevice()) {
+      this.stickyLayoutService.enableAutoHide?.('header', 100);
     }
+  }
 
-    // Subscribe to direction changes to update body class
+  private setupDirectionHandling(): void {
     this.themeDirectionService.direction$.subscribe(direction => {
       if (direction === 'ltr') {
         document.body.classList.add('ltr');
@@ -70,5 +93,18 @@ export class AppComponent implements OnInit {
         document.body.classList.remove('ltr');
       }
     });
+  }
+
+  private isValidTheme(theme: string): boolean {
+    const validThemes = [
+      'light', 'dark',
+      'green-orange-light', 'green-orange-dark',
+      'indigo-light', 'indigo-dark'
+    ];
+    return validThemes.includes(theme);
+  }
+
+  private isMobileDevice(): boolean {
+    return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
 }

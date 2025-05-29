@@ -1,29 +1,30 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TranslateModule} from '@ngx-translate/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
-// Components
-import {HeaderComponent} from './components/header/header.component';
-import {FooterComponent} from './components/footer/footer.component';
-import {LanguageSelectorComponent} from './components/language-selector/language-selector.component';
-import {ThemeToggleComponent} from './components/theme-toggle/theme-toggle.component';
-import {FlightCardComponent} from './components/flight-card/flight-card.component';
+// Import new components
+import { StickyContainerComponent } from './components/sticky-container/sticky-container.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { ModifySearchComponent } from './components/modify-search/modify-search.component';
+import { AppLayoutComponent } from './components/app-layout/app-layout.component';
+import { StickyConfigComponent } from './components/sticky-config/sticky-config.component';
 
-// Directives
-import {RtlSupportDirective} from './directives/rtl-support.directive';
-
-// Pipes
-import {DurationPipe} from './pipes/duration.pipe';
-import {SearchFormComponent} from './components/search-form.component';
-import {ThemeSelectorComponent} from './components/theme-selector/theme-selector.component';
-import {FormInspectorComponent} from './components/form-inspector.component';
-import {FormTestComponent} from './components/form-test.component';
+// Import existing components
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
+import { FlightCardComponent } from './components/flight-card/flight-card.component';
+import { SearchFormComponent } from './components/search-form.component';
+import { ThemeSelectorComponent } from './components/theme-selector/theme-selector.component';
+import { RtlSupportDirective } from './directives/rtl-support.directive';
+import { DurationPipe } from './pipes/duration.pipe';
 
 @NgModule({
   declarations: [
-    // Components
+    // Existing components
     HeaderComponent,
     FooterComponent,
     LanguageSelectorComponent,
@@ -31,14 +32,15 @@ import {FormTestComponent} from './components/form-test.component';
     FlightCardComponent,
     SearchFormComponent,
     ThemeSelectorComponent,
-    FormInspectorComponent,
-    FormTestComponent,
-
-    // Directives
     RtlSupportDirective,
+    DurationPipe,
 
-    // Pipes
-    DurationPipe
+    // New sticky system components
+    StickyContainerComponent,
+    BreadcrumbComponent,
+    ModifySearchComponent,
+    AppLayoutComponent,
+    StickyConfigComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,7 @@ import {FormTestComponent} from './components/form-test.component';
     ReactiveFormsModule,
     TranslateModule,
 
-    // Components
+    // All components
     HeaderComponent,
     FooterComponent,
     LanguageSelectorComponent,
@@ -63,15 +65,15 @@ import {FormTestComponent} from './components/form-test.component';
     FlightCardComponent,
     SearchFormComponent,
     ThemeSelectorComponent,
-    FormInspectorComponent,
-    FormTestComponent,
+    StickyContainerComponent,
+    BreadcrumbComponent,
+    ModifySearchComponent,
+    AppLayoutComponent,
+    StickyConfigComponent,
 
-    // Directives
+    // Directives and pipes
     RtlSupportDirective,
-
-    // Pipes
     DurationPipe
   ]
 })
-export class SharedModule {
-}
+export class SharedModule {}
